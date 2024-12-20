@@ -1,13 +1,12 @@
 import { SafeAreaView, StyleSheet, Text, View, Image, Dimensions, TouchableOpacity, StatusBar } from 'react-native'
 import React from 'react'
 import { COLORS } from '../../../services/colors'
-import LinearGradient from 'react-native-linear-gradient';
 import OnBoardingModal from '../../../components/OnBoardingModal';
 import { useNavigation } from '@react-navigation/native';
 
 const { width, height } = Dimensions.get('window')
 
-const SplashTwo = () => {
+const SplashFour = () => {
   const navigation = useNavigation()
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -18,16 +17,16 @@ const SplashTwo = () => {
         </TouchableOpacity>
       </View>
       <View style={styles.container}>
-        <Image source={require('../../../assets/images/OnBoarding/doctors.jpg')} resizeMode='cover' style={{ width: 360, height: 360 }} />
+        <Image source={require('../../../assets/images/OnBoarding/pharmacy.jpg')} resizeMode='cover' style={{ width: 360, height: 360 }} />
       </View>
 
-      <OnBoardingModal text={'Consult only with a doctor you trust'} onPress={()=> navigation.navigate('SplashThree')} one={true} />
+      <OnBoardingModal text={'Consult only with a doctor you trust'} three={true} onPress={()=> navigation.navigate('StartScreen')} />
     </SafeAreaView>
 
   )
 }
 
-export default SplashTwo
+export default SplashFour
 
 const styles = StyleSheet.create({
   safeArea: {
@@ -38,7 +37,6 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    // top: height * 0.1,
     flex:1
   },
  

@@ -1,7 +1,7 @@
 import {PermissionsAndroid, Platform} from 'react-native';
 
 import {API_BASE_URL} from './apiServices';
-import DeviceContext from '../AppContexts/DeviceContext';
+// import DeviceContext from '../AppContexts/DeviceContext';
 import messaging from '@react-native-firebase/messaging';
 import {useContext} from 'react';
 import {useNavigation} from '@react-navigation/native';

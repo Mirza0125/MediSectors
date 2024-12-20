@@ -1,14 +1,13 @@
 import { SafeAreaView, StyleSheet, Text, View, Image, Dimensions, TouchableOpacity, StatusBar } from 'react-native'
 import React from 'react'
 import { COLORS } from '../../../services/colors'
-import LinearGradient from 'react-native-linear-gradient';
 import OnBoardingModal from '../../../components/OnBoardingModal';
 import { useNavigation } from '@react-navigation/native';
 
 const { width, height } = Dimensions.get('window')
 
-const SplashTwo = () => {
-  const navigation = useNavigation()
+const SplashThree = () => {
+    const navigation = useNavigation();
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar barStyle="dark-content" translucent={true} backgroundColor="transparent" />
@@ -18,16 +17,16 @@ const SplashTwo = () => {
         </TouchableOpacity>
       </View>
       <View style={styles.container}>
-        <Image source={require('../../../assets/images/OnBoarding/doctors.jpg')} resizeMode='cover' style={{ width: 360, height: 360 }} />
+        <Image source={require('../../../assets/images/OnBoarding/patients.jpg')} resizeMode='cover' style={{ width: 360, height: 360 }} />
       </View>
 
-      <OnBoardingModal text={'Consult only with a doctor you trust'} onPress={()=> navigation.navigate('SplashThree')} one={true} />
+      <OnBoardingModal text={'Consult only with a doctor you trust'} two={true} onPress={()=> navigation.navigate('SplashFour')}  />
     </SafeAreaView>
 
   )
 }
 
-export default SplashTwo
+export default SplashThree
 
 const styles = StyleSheet.create({
   safeArea: {
@@ -38,7 +37,6 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    // top: height * 0.1,
     flex:1
   },
  

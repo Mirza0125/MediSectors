@@ -1,26 +1,13 @@
 export const COLORS = {
-  primary: '#FF6020',
-  black: '#000000',
-  // primary: '#EBBB39',
-  secondary: '#A1B2CF',
-  headingblack: '#262626',
-  black: '#011114',
-  white: '#ffffff',
-  grey: '#858585',
-  para: '#1E1E1E',
-  bgcolor: '#343434',
-  placeHolderColor: '#858585',
-  red: '#D42A2A',
-  bgGrey: '#FCFCFC',
-  philippineGray: '#8B8B8B',
-
-  // new colors
-  backgroundColor : '#14151C',
-  heading:'white',
-  subtitle:'#808D9E',
-  inputFields:'#1D2634',
-  inputFieldsText:'white',
-  greenText:'#009379',
-  greenText2:'rgba(27, 187, 159, 1)'
+  background : 'rgba(255, 255, 255, 1)',
+  greenColor : 'rgba(25, 154, 142, 1)',
+  white : 'rgba(255, 255, 255, 1)',
+  lightGrey: 'rgba(161, 168, 176, 1)',
+  gradient1 : 'rgba(245, 247, 255, 1)',
+  gradient2 : 'rgba(245, 247, 255, 0)',
+  primary : 'rgba(16, 22, 35, 1)',
+  lightGreen : 'rgb(196, 232, 228)',
+  inputField : 'rgba(249, 250, 251, 1)',
+  inputFieldBorder : 'rgba(229, 231, 235, 1)'
 
 };
