@@ -1,13 +1,30 @@
 import { Dimensions, Image, StyleSheet, Text, TextInput, View } from 'react-native'
 import React from 'react'
 import { COLORS } from '../services/colors'
+import Feather from 'react-native-vector-icons/Feather';
+import { useSelector } from 'react-redux';
+import { darkTheme, lightTheme } from '../redux/theme/theme';
 
-const {width, height} = Dimensions.get('window')
-const InputField = () => {
+const { width, height } = Dimensions.get('window')
+
+const InputField = (props) => {
+  const theme = useSelector(state => state.theme.theme)
+  const currentTheme = theme === 'light' ? lightTheme : darkTheme;
   return (
-    <View style={styles.container}>
-        <Image source={require('../assets/images/Email.png')} style={{width:24, height:24}} resizeMode='contain' />
-        <TextInput placeholder='Enter your email' placeholderTextColor={COLORS.lightGrey} style={{width:290, color : COLORS.primary, fontFamily:'Inter_18pt-Regular', left:16}} />
+    <View style={{
+      width: width * 0.9,
+      flexDirection: 'row',
+      alignItems: 'center',
+      borderWidth: 1,
+      borderColor: currentTheme.inputFieldBorder,
+      backgroundColor: currentTheme.inputField,
+      borderRadius: 24,
+      paddingHorizontal: 20,
+      height: 60,
+      marginVertical: 10
+    }}>
+      <Feather name={props.name} size={24} color={currentTheme.lightGrey} />
+      <TextInput placeholder={props.placeholder} placeholderTextColor={COLORS.lightGrey} style={{ width: 290, color: currentTheme.primary, fontFamily: 'Inter_18pt-Regular', left: 16 }} />
     </View>
   )
 }
@@ -15,16 +32,4 @@ const InputField = () => {
 export default InputField
 
 const styles = StyleSheet.create({
-    container : {
-        width : width *0.9,
-        flexDirection:'row',
-        alignItems:'center',
-        borderWidth:1,
-        borderColor:COLORS.inputFieldBorder,
-        backgroundColor : COLORS.inputField,
-        borderRadius:24,
-        paddingHorizontal:20,
-        height : 60,
-        marginVertical:10
-    }
 })

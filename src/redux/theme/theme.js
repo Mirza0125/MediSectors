@@ -1,63 +1,32 @@
-
 export const lightTheme = {
-    background: '#ffffff',
-    text: '#000000',
-    border:'black',
-    button: 'black',
-    buttonColor:'white',
-    progressBorder:'white',
-    selection:'#F3F3F3',
-    registrationColor:'#F3F3F3',
-    inputColor:'black',
-    verificationBar:'lightgray',
-   
+  background : 'rgba(255, 255, 255, 1)',
+  greenColor : 'rgba(25, 154, 142, 1)',
+  white : 'rgba(255, 255, 255, 1)',
+  lightGrey: 'rgba(161, 168, 176, 1)',
+  gradient1 : 'rgba(245, 247, 255, 1)',
+  gradient2 : 'rgba(245, 247, 255, 0)',
+  primary : 'rgba(16, 22, 35, 1)',
+  lightGreen : 'rgb(196, 232, 228)',
+  inputField : 'rgba(249, 250, 251, 1)',
+  inputFieldBorder : 'rgba(229, 231, 235, 1)',
+  modalOverlay : 'rgba(16, 22, 35, 0.5)',
+  statusBar : 'dark-content'
 
-    // HOME COLORS
-    homeText:'black',
-    addTaskButoon:'#2B2B30',
-    dateSelection:"#B1B1B1",
-    dateContainer:'#F5F5F5',
-    dataColor:'#171717',
-    cadrs:'#ffffff',
-    learnNowBtn:'#2B2B30',
-    learnNowFont:'white',
-    StatusBarColor:'white',
-    overlayColor: 'rgba(255, 255, 255, 0.7)',
-    progressUnfill:'lightgray',
-    progressPercentage:'#F5F5F5',
-    barstyle:'dark-content'
-  };
-  
+}
 
-  export const darkTheme = {
-    background: '#14151C',
-    text: '#ffffff',
-    border:'white',
-    button:'white',
-    buttonColor:'black',
-    progressBorder:'black',
-    selection:'#2B2C34',
-    registrationColor:'#2B2C34',
-    inputColor:'white',
-    verificationBar:'#2B2C34',
+export const darkTheme = {
+  background : 'rgb(14, 13, 13)',
+  greenColor : 'rgba(25, 154, 142, 1)',
+  white : 'rgb(31, 30, 30)',
+  lightGrey: 'rgba(161, 168, 176, 1)',
+  gradient1 : 'rgb(44, 44, 45)',
+  gradient2 : 'rgba(245, 247, 255, 0)',
+  primary : 'rgb(255, 255, 255)',
+  lightGreen : 'rgb(196, 232, 228)',
+  inputField : 'rgb(31, 30, 30)',
+  inputFieldBorder : 'rgba(229, 231, 235, 1)',
+  modalOverlay : 'rgba(16, 22, 35, 0.5)',
+  statusBar : 'light-content'
 
 
-    // HOME COLORS
-
-    homeText:'white',
-    addTaskButoon:'#009379',
-    dateSelection:"#009379",
-    dateContainer:'#62636D',
-    dataColor:'white',
-    cadrs:'#2B2C34',
-    learnNowBtn:'#1A1A1A',
-    learnNowFont:'white',
-    StatusBarColor:'#14151C',
-    overlayColor:'rgba(20, 21, 28, 0.7)', 
-    progressUnfill:'lightgray',
-    progressPercentage:'#009379',
-    barstyle:'light-content'   ,
-    flashcardsColor:'#2B2B30',
-    flashcardsBorderColor:'#484848'
-  };
-  
+}

@@ -10,6 +10,10 @@ import SplashThree from '../screens/newauthscreens/SplashScreens/SplashThree';
 import SplashFour from '../screens/newauthscreens/SplashScreens/SplashFour';
 import StartScreen from '../screens/newauthscreens/LoginScreen/StartScreen';
 import SignIn from '../screens/newauthscreens/LoginScreen/SignIn';
+import SignUp from '../screens/newauthscreens/LoginScreen/SignUp';
+import ForgetPassword from '../screens/newauthscreens/ForgetPasswordScreens/ForgetPassword';
+import VerificationCodeScreen from '../screens/newauthscreens/ForgetPasswordScreens/VerificationCodeScreen';
+import ResetPassword from '../screens/newauthscreens/ForgetPasswordScreens/ResetPassword';
 
 const Stack = createStackNavigator();
 
@@ -27,7 +31,10 @@ const MainStackNavigator = () => {
         <Stack.Screen name='SplashFour' component={SplashFour} />
         <Stack.Screen name='StartScreen' component={StartScreen} />
         <Stack.Screen name='SignIn' component={SignIn} />
-
+        <Stack.Screen name='SignUp' component={SignUp} />
+        <Stack.Screen name='ForgetPassword' component={ForgetPassword} />
+        <Stack.Screen name='VerificationScreen' component={VerificationCodeScreen} />
+        <Stack.Screen name='ResetPassword' component={ResetPassword} />
 
 
 

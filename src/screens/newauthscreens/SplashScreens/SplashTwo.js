@@ -4,17 +4,22 @@ import { COLORS } from '../../../services/colors'
 import LinearGradient from 'react-native-linear-gradient';
 import OnBoardingModal from '../../../components/OnBoardingModal';
 import { useNavigation } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
+import { lightTheme, darkTheme } from '../../../redux/theme/theme';
 
 const { width, height } = Dimensions.get('window')
 
 const SplashTwo = () => {
   const navigation = useNavigation()
+  const theme = useSelector(state => state.theme.theme)
+  const currentTheme = theme === 'light' ? lightTheme : darkTheme;
+  
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <StatusBar barStyle="dark-content" translucent={true} backgroundColor="transparent" />
+    <SafeAreaView style={[styles.safeArea, {backgroundColor : currentTheme.background}]}>
+      <StatusBar barStyle={currentTheme.statusBar} translucent={true} backgroundColor="transparent" />
       <View style={{ alignSelf: 'flex-end', top: 50, right: 30 }}>
-        <TouchableOpacity>
-          <Text style={{ color: COLORS.lightGrey, fontFamily: 'Inter_18pt-Regular', fontSize: 14 }}>Skip</Text>
+        <TouchableOpacity onPress={()=> navigation.navigate('StartScreen')}>
+          <Text style={{ color: currentTheme.lightGrey, fontFamily: 'Inter_18pt-Regular', fontSize: 14 }}>Skip</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.container}>
@@ -32,7 +37,6 @@ export default SplashTwo
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: COLORS.background,
     position: 'relative'
   },
   container: {

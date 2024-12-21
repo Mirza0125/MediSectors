@@ -1,7 +1,7 @@
 import { TOGGLE_THEME } from './Actions';
 
 const initialState = {
-  theme: 'dark', 
+  theme: 'light', 
 };
 
 export const themeReducer = (state = initialState, action) => {
@@ -9,7 +9,7 @@ export const themeReducer = (state = initialState, action) => {
     case TOGGLE_THEME:
       return {
         ...state,
-        theme: state.theme === 'light' ? 'dark' : 'light',
+        theme: action.payload,
       };
     default:
       return state;

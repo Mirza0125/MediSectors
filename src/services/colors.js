@@ -8,6 +8,7 @@ export const COLORS = {
   primary : 'rgba(16, 22, 35, 1)',
   lightGreen : 'rgb(196, 232, 228)',
   inputField : 'rgba(249, 250, 251, 1)',
-  inputFieldBorder : 'rgba(229, 231, 235, 1)'
+  inputFieldBorder : 'rgba(229, 231, 235, 1)',
+  modalOverlay : 'rgba(16, 22, 35, 0.5)',
 
 };
