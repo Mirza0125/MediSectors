@@ -12,6 +12,7 @@ import CheckBox2 from '../../../assets/images/Checkbox2.svg'
 import { lightTheme, darkTheme } from '../../../redux/theme/theme'
 import { useSelector } from 'react-redux'
 import Entypo from 'react-native-vector-icons/Entypo';
+import { Checkbox } from 'react-native-paper';
 
 const { width, height } = Dimensions.get('window')
 
@@ -24,11 +25,11 @@ const SignUp = () => {
     const currentTheme = theme === 'light' ? lightTheme : darkTheme;
 
     return (
-        <SafeAreaView style={[styles.safeArea,{backgroundColor:currentTheme.background}]}>
+        <SafeAreaView style={[styles.safeArea, { backgroundColor: currentTheme.background }]}>
             <StatusBar barStyle={currentTheme.statusBar} translucent={true} backgroundColor="transparent" />
             <View style={{ flexDirection: 'row', marginTop: 50, paddingHorizontal: 20 }}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
-                   <Entypo name='chevron-thin-left' size={20} color={currentTheme.primary} />
+                    <Entypo name='chevron-thin-left' size={20} color={currentTheme.primary} />
                 </TouchableOpacity>
                 <View style={{ left: 140 }}>
                     <Text style={{ color: currentTheme.primary, fontFamily: 'Inter_18pt-Bold', fontSize: 16 }} >Sign Up</Text>
@@ -42,17 +43,26 @@ const SignUp = () => {
 
             <View style={{ paddingHorizontal: 25, marginTop: 15 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <TouchableOpacity onPress={() => setChecked(!checked)}>
+                    {/* <TouchableOpacity onPress={() => setChecked(!checked)}>
                         {
                             checked ? <CheckBox2 width={30} height={30} />
                                 :
                                 <CheckBox width={30} height={30} />
                         }
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
+                    <Checkbox
+                        status={checked ? 'checked' : 'unchecked'}
+                        onPress={() => {
+                            setChecked(!checked);
+                        }}
+                        uncheckedColor={COLORS.lightGrey}
+                        color={COLORS.greenColor}
+                    />
                     <View style={{ marginHorizontal: 10, left: 7 }}>
                         <Text style={{ color: currentTheme.primary, fontFamily: 'Inter_18pt-Regular' }}>
-                            I agree to the medisectors <Text style={{ color: currentTheme.greenColor }}>Terms of Service</Text> and <Text style={{ color: currentTheme.greenColor, }}>Privacy Policy</Text>
+                            I agree to the medisectors <Text style={{ color: currentTheme.greenColor }}>Terms of Service</Text> and 
                         </Text>
+                        <Text style={{ color: currentTheme.greenColor,top:2 }}>Privacy Policy</Text>
                     </View>
 
 

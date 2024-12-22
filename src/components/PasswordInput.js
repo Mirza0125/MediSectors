@@ -25,13 +25,14 @@ const PasswordInput = (props) => {
             backgroundColor: currentTheme.inputField,
             borderRadius: 24,
             paddingHorizontal: 20,
-            height: 60,
+            height: 55,
             marginVertical: 5,
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+            marginVertical:10
 
         }}>
             <Feather name='lock' size={24} color={currentTheme.lightGrey} />
-            <TextInput placeholder={props.placeholder} placeholderTextColor={currentTheme.lightGrey} style={{ width: 250, color: COLORS.primary, fontFamily: 'Inter_18pt-Regular', left: 0 }} secureTextEntry={!visible} />
+            <TextInput placeholder={props.placeholder} placeholderTextColor={currentTheme.lightGrey} style={{ width: 250, color: currentTheme.primary, fontFamily: 'Inter_18pt-Regular', left: 0 }} secureTextEntry={!visible} />
             <TouchableOpacity
                 onPress={togglePasswordVisibility}>
                 <Feather name={visible ? 'eye' : 'eye-off'} size={24} color={currentTheme.lightGrey} />

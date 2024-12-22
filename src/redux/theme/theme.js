@@ -10,7 +10,11 @@ export const lightTheme = {
   inputField : 'rgba(249, 250, 251, 1)',
   inputFieldBorder : 'rgba(229, 231, 235, 1)',
   modalOverlay : 'rgba(16, 22, 35, 0.5)',
-  statusBar : 'dark-content'
+  statusBar : 'dark-content',
+  googleIcon : require('../../assets/images/Google.png'),
+  facebookIcon : require('../../assets/images/Facebook.png'),
+  appleIcon : require('../../assets/images/Vector.png'),
+  toggleColor : 'rgba(255, 255, 255, 1)',
 
 }
 
@@ -26,7 +30,14 @@ export const darkTheme = {
   inputField : 'rgb(31, 30, 30)',
   inputFieldBorder : 'rgba(229, 231, 235, 1)',
   modalOverlay : 'rgba(16, 22, 35, 0.5)',
-  statusBar : 'light-content'
+  statusBar : 'light-content',
+  googleIcon : require('../../assets/images/Google.png'),
+  facebookIcon : require('../../assets/images/Facebook.png'),
+  appleIcon : require('../../assets/images/apple.png'),
+  toggleColor : 'rgb(43, 42, 42)'
+
+
+
 
 
 }

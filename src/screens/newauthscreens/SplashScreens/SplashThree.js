@@ -22,7 +22,7 @@ const SplashThree = () => {
         </TouchableOpacity>
       </View>
       <View style={styles.container}>
-        <Image source={require('../../../assets/images/OnBoarding/patients.jpg')} resizeMode='cover' style={{ width: 360, height: 360 }} />
+        <Image source={require('../../../assets/images/OnBoarding/patients.png')} resizeMode='cover' style={{ width: 360, height: 360 }} />
       </View>
 
       <OnBoardingModal text={'Consult only with a doctor you trust'} two={true} onPress={() => navigation.navigate('SplashFour')} />

@@ -57,9 +57,9 @@ const SignIn = () => {
                 </View>
 
                 <View style={{ marginTop: 25 }}>
-                    <SocialField text={'Sign in with Google'} img={require('../../../assets/images/Google.png')} />
-                    <SocialField text={'Sign in with Apple'} img={require('../../../assets/images/Vector.png')} />
-                    <SocialField text={'Sign in with Facebook'} img={require('../../../assets/images/Facebook.png')} />
+                    <SocialField text={'Sign in with Google'} img={currentTheme.googleIcon} />
+                    <SocialField text={'Sign in with Apple'} img={currentTheme.appleIcon} />
+                    <SocialField text={'Sign in with Facebook'} img={currentTheme.facebookIcon} />
 
                 </View>
 
@@ -70,7 +70,6 @@ const SignIn = () => {
                 onRequestClose={() => setModalVisible(false)}
                 transparent={true}
             >
-                <StatusBar translucent backgroundColor={COLORS.modalOverlay} barStyle="dark-content" />
 
                 <View style={{ height: '100%', position: 'absolute', width: '100%', backgroundColor: currentTheme.modalOverlay, alignItems: 'center' }}>
                     <View style={{ alignSelf: 'center', width: '89%', backgroundColor: currentTheme.white, height: '50%', padding: 30, borderRadius: 20, alignItems: 'center', top: 200 }}>
@@ -80,7 +79,7 @@ const SignIn = () => {
                             <Text style={{ color: currentTheme.lightGrey, fontFamily: 'Inter_18pt-Regular', fontSize: 16, textAlign: 'center', top: 6 }}>Once again you login successfully into medidoc app</Text>
 
                         </View>
-                        <CustomButton title={'Go to home'} style={{ top: 110, width: 200 }} />
+                        <CustomButton title={'Go to home'} style={{ top: 110, width: 200 }} onPress={()=>navigation.navigate('Home')} />
 
                     </View>
 

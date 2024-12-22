@@ -24,12 +24,12 @@ const StartScreen = () => {
         dispatch(toggleTheme(theme === 'light' ? 'dark' : 'light'))
     }
 
-    
+
 
     return (
-        <SafeAreaView style={[styles.safeArea,{backgroundColor:currentTheme.background}]}>
+        <SafeAreaView style={[styles.safeArea, { backgroundColor: currentTheme.background }]}>
             <StatusBar barStyle={currentTheme.statusBar} translucent={true} backgroundColor="transparent" />
-            <View style={{ top: 40, alignSelf:'flex-end', right:20}}>
+            <View style={{ top: 40, alignSelf: 'flex-end', right: 20 }}>
                 <ToggleSwitch
                     isOn={isOn}
                     onColor={currentTheme.greenColor}
@@ -37,6 +37,8 @@ const StartScreen = () => {
                     size="medium"
                     onToggle={toggle}
                 />
+
+                
             </View>
             <View style={styles.container}>
                 <Logo2 width={100} height={100} />

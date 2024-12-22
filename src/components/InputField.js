@@ -20,11 +20,11 @@ const InputField = (props) => {
       backgroundColor: currentTheme.inputField,
       borderRadius: 24,
       paddingHorizontal: 20,
-      height: 60,
+      height: 55,
       marginVertical: 10
     }}>
       <Feather name={props.name} size={24} color={currentTheme.lightGrey} />
-      <TextInput placeholder={props.placeholder} placeholderTextColor={COLORS.lightGrey} style={{ width: 290, color: currentTheme.primary, fontFamily: 'Inter_18pt-Regular', left: 16 }} />
+      <TextInput placeholder={props.placeholder} placeholderTextColor={currentTheme.lightGrey} style={{ width: 290, color: currentTheme.primary, fontFamily: 'Inter_18pt-Regular', left: 16 }} />
     </View>
   )
 }

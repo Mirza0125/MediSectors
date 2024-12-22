@@ -14,6 +14,7 @@ import SignUp from '../screens/newauthscreens/LoginScreen/SignUp';
 import ForgetPassword from '../screens/newauthscreens/ForgetPasswordScreens/ForgetPassword';
 import VerificationCodeScreen from '../screens/newauthscreens/ForgetPasswordScreens/VerificationCodeScreen';
 import ResetPassword from '../screens/newauthscreens/ForgetPasswordScreens/ResetPassword';
+import BottomNavigationScreen from './BottomTabNavigator';
 
 const Stack = createStackNavigator();
 
@@ -35,9 +36,7 @@ const MainStackNavigator = () => {
         <Stack.Screen name='ForgetPassword' component={ForgetPassword} />
         <Stack.Screen name='VerificationScreen' component={VerificationCodeScreen} />
         <Stack.Screen name='ResetPassword' component={ResetPassword} />
-
-
-
+        <Stack.Screen name='Home' component={BottomNavigationScreen} />
 
       </Stack.Navigator>
     </NavigationContainer>
