@@ -18,7 +18,7 @@ const SplashThree = () => {
       <StatusBar barStyle={currentTheme.statusBar} translucent={true} backgroundColor="transparent" />
       <View style={{ alignSelf: 'flex-end', top: 50, right: 30 }}>
         <TouchableOpacity onPress={() => navigation.navigate('StartScreen')}>
-          <Text style={{ color: currentTheme.lightGrey, fontFamily: 'Inter_18pt-Regular', fontSize: 14 }}>Skip</Text>
+          <Text style={{ color: currentTheme.lightGrey, fontFamily: 'Poppins-Regular', fontSize: 14 }}>Skip</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.container}>

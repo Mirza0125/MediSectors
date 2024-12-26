@@ -21,7 +21,7 @@ const SplashOne = (props) => {
       <View style={styles.container}>
       <StatusBar barStyle="light-content" translucent={true} backgroundColor="transparent" />
       <Logo  width={130} height={130}  />
-        <Text style={{color:COLORS.white, fontSize:26, fontFamily:'Montserrat-ExtraBold', top:10}}>MediSectors</Text>
+        <Text style={{color:COLORS.white, fontSize:26, fontFamily:'Poppins-Bold', top:10}}>MediSectors</Text>
       </View>
     </SafeAreaView>
   )

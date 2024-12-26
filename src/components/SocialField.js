@@ -24,7 +24,7 @@ const SocialField = (props) => {
       marginVertical: 10
     }}>
       <Image source={props.img} style={{ width: 24, height: 24 }} resizeMode='contain' />
-      <Text style={{ color: currentTheme.primary, fontFamily: 'Inter_18pt-Bold', left: 70 }}>{props.text}</Text>
+      <Text style={{ color: currentTheme.primary, fontFamily: 'Poppins-Bold', left: 70 }}>{props.text}</Text>
     </TouchableOpacity>
   )
 }

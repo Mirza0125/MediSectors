@@ -15,7 +15,7 @@ const OnBoardingModal = (props) => {
             style={styles.gradient}
         >
             <View>
-                <Text style={{ fontFamily: 'Inter_18pt-Bold', fontSize: 24, color: currentTheme.primary, fontWeight: 'bold', marginTop: 15 }}>
+                <Text style={{ fontFamily: 'Poppins-Bold', fontSize: 24, color: currentTheme.primary, marginTop: 15 }}>
                     {props.text}
                 </Text>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginVertical: 40 }}>

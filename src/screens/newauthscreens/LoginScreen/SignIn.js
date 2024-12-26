@@ -26,7 +26,7 @@ const SignIn = () => {
                    <Entypo name='chevron-thin-left' size={20} color={currentTheme.primary} />
                 </TouchableOpacity>
                 <View style={{ left: 150 }}>
-                    <Text style={{ color: currentTheme.primary, fontFamily: 'Inter_18pt-Bold', fontSize: 16 }} >Login</Text>
+                    <Text style={{ color: currentTheme.primary, fontFamily: 'Poppins-Bold', fontSize: 16 }} >Login</Text>
                 </View>
             </View>
             <View style={styles.container}>
@@ -34,18 +34,18 @@ const SignIn = () => {
             <PasswordInput placeholder={'Enter your Password'} />
                 <View style={{ alignSelf: 'flex-end' }}>
                     <TouchableOpacity onPress={()=> navigation.navigate('ForgetPassword')}>
-                        <Text style={{ color: currentTheme.greenColor, fontFamily: 'Inter_18pt-Medium' }}>Forgot Password?</Text>
+                        <Text style={{ color: currentTheme.greenColor, fontFamily: 'Poppins-Medium' }}>Forgot Password?</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={{ marginTop: 40 }}>
 
                     <CustomButton title={'Login'} style={{ width: width * 0.9 }} onPress={() => setModalVisible(true)} />
                     <View style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'center', marginTop: 14 }}>
-                        <Text style={{ color: currentTheme.lightGrey, fontFamily: 'Inter_18pt-Regular', top: 1 }}>
+                        <Text style={{ color: currentTheme.lightGrey, fontFamily: 'Poppins-Regular', top: 1 }}>
                             Don’t have an account?
                         </Text>
                         <TouchableOpacity onPress={()=>navigation.navigate('SignUp')}>
-                            <Text style={{ color: currentTheme.greenColor, fontFamily: 'Inter_18pt-Regular', left: 4 }}>Sign Up</Text>
+                            <Text style={{ color: currentTheme.greenColor, fontFamily: 'Poppins-Regular', left: 4 }}>Sign Up</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -75,8 +75,8 @@ const SignIn = () => {
                     <View style={{ alignSelf: 'center', width: '89%', backgroundColor: currentTheme.white, height: '50%', padding: 30, borderRadius: 20, alignItems: 'center', top: 200 }}>
                         <Done width={100} height={100} style={{ top: 40 }} />
                         <View style={{ top: 80 }}>
-                            <Text style={{ color: currentTheme.primary, fontFamily: 'Inter_18pt-Bold', fontSize: 20, textAlign: 'center' }}>Yeay! Welcome Back</Text>
-                            <Text style={{ color: currentTheme.lightGrey, fontFamily: 'Inter_18pt-Regular', fontSize: 16, textAlign: 'center', top: 6 }}>Once again you login successfully into medidoc app</Text>
+                            <Text style={{ color: currentTheme.primary, fontFamily: 'Poppins-Bold', fontSize: 20, textAlign: 'center' }}>Yeay! Welcome Back</Text>
+                            <Text style={{ color: currentTheme.lightGrey, fontFamily: 'Poppins-Regular', fontSize: 16, textAlign: 'center', top: 6 }}>Once again you login successfully into medidoc app</Text>
 
                         </View>
                         <CustomButton title={'Go to home'} style={{ top: 110, width: 200 }} onPress={()=>navigation.navigate('Home')} />

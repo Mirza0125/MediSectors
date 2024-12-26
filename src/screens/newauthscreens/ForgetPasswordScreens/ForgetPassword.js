@@ -37,8 +37,8 @@ const ForgetPassword = () => {
             </View>
             <View style={styles.container}>
                 <View style={{ marginTop: 20 }}>
-                    <Text style={{ color: currentTheme.primary, fontFamily: 'Inter_18pt-Bold', fontSize: 24 }}>Forgot Your Password?</Text>
-                    <Text style={{ color: currentTheme.lightGrey, fontFamily: 'Inter_18pt-Regular', fontSize: 16, marginTop: 6 }}>Enter your email or your phone number, we will send you confirmation code</Text>
+                    <Text style={{ color: currentTheme.primary, fontFamily: 'Poppins-Bold', fontSize: 24 }}>Forgot Your Password?</Text>
+                    <Text style={{ color: currentTheme.lightGrey, fontFamily: 'Poppins-Regular', fontSize: 16, marginTop: 6 }}>Enter your email or your phone number, we will send you confirmation code</Text>
                 </View>
                 <View style={{ marginTop: 30, alignSelf: 'center' }}>
                     <View
@@ -57,12 +57,12 @@ const ForgetPassword = () => {
                     >
                         <TouchableOpacity onPress={toggle2}>
                             <View style={{ width: 160, height: 48, backgroundColor: email ? currentTheme.toggleColor : 'transparent', alignItems: 'center', justifyContent: 'center', borderRadius: 25 }}>
-                                <Text style={{ color: email ? currentTheme.greenColor : currentTheme.lightGrey, fontFamily: 'Inter_18pt-Regular', fontSize: 14 }}>Email</Text>
+                                <Text style={{ color: email ? currentTheme.greenColor : currentTheme.lightGrey, fontFamily: 'Poppins-Regular', fontSize: 14 }}>Email</Text>
                             </View>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={toggle}>
                             <View style={{ width: 160, height: 48, backgroundColor: phone ? currentTheme.toggleColor : 'transparent', alignItems: 'center', justifyContent: 'center', borderRadius: 25 }}>
-                                <Text style={{ color: phone ? currentTheme.greenColor : currentTheme.lightGrey, fontFamily: 'Inter_18pt-Regular', fontSize: 14 }}>Phone</Text>
+                                <Text style={{ color: phone ? currentTheme.greenColor : currentTheme.lightGrey, fontFamily: 'Poppins-Regular', fontSize: 14 }}>Phone</Text>
                             </View>
                         </TouchableOpacity>
                     </View>

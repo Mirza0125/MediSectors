@@ -29,8 +29,8 @@ const VerificationCodeScreen = () => {
             </View>
             <View style={styles.container}>
                 <View style={{ marginTop: 20 }}>
-                    <Text style={{ color: currentTheme.primary, fontFamily: 'Inter_18pt-Bold', fontSize: 24 }}>Enter Verification Code</Text>
-                    <Text style={{ color: currentTheme.lightGrey, fontFamily: 'Inter_18pt-Regular', fontSize: 16, marginTop: 6 }}>Enter code that we have sent to your number <Text style={{ color: COLORS.primary }}>08528188*** </Text></Text>
+                    <Text style={{ color: currentTheme.primary, fontFamily: 'Poppins-Bold', fontSize: 24 }}>Enter Verification Code</Text>
+                    <Text style={{ color: currentTheme.lightGrey, fontFamily: 'Poppins-Regular', fontSize: 16, marginTop: 6 }}>Enter code that we have sent to your number <Text style={{ color: COLORS.primary }}>08528188*** </Text></Text>
                 </View>
                 <View style={{ marginTop: 40 }}>
                     <VerificationFields
@@ -47,11 +47,11 @@ const VerificationCodeScreen = () => {
             <View style={{ marginTop: 40, paddingHorizontal: 20 }}>
                 <CustomButton title={'Verify'} style={{ width: width * 0.9 }} onPress={() => navigation.navigate('ResetPassword')} />
                 <View style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'center', marginTop: 14 }}>
-                    <Text style={{ color: currentTheme.lightGrey, fontFamily: 'Inter_18pt-Regular', top: 1 }}>
+                    <Text style={{ color: currentTheme.lightGrey, fontFamily: 'Poppins-Regular', top: 1 }}>
                         Didn’t receive the code?
                     </Text>
                     <TouchableOpacity>
-                        <Text style={{ color: currentTheme.greenColor, fontFamily: 'Inter_18pt-Regular', left: 4 }}>Resend</Text>
+                        <Text style={{ color: currentTheme.greenColor, fontFamily: 'Poppins-Regular', left: 4 }}>Resend</Text>
                     </TouchableOpacity>
                 </View>
             </View>

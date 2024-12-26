@@ -28,8 +28,8 @@ const ResetPassword = () => {
             </View>
             <View style={styles.container}>
                 <View style={{ marginTop: 20 }}>
-                    <Text style={{ color: currentTheme.primary, fontFamily: 'Inter_18pt-Bold', fontSize: 24 }}>Create New Password</Text>
-                    <Text style={{ color: currentTheme.lightGrey, fontFamily: 'Inter_18pt-Regular', fontSize: 16, marginTop: 6 }}>Create your new password to login</Text>
+                    <Text style={{ color: currentTheme.primary, fontFamily: 'Poppins-Bold', fontSize: 24 }}>Create New Password</Text>
+                    <Text style={{ color: currentTheme.lightGrey, fontFamily: 'Poppins-Regular', fontSize: 16, marginTop: 6 }}>Create your new password to login</Text>
                 </View>
                 <View style={{ marginTop: 40, alignSelf: 'center' }}>
                     <PasswordInput placeholder={'Create Password'} />
@@ -53,8 +53,8 @@ const ResetPassword = () => {
                     <View style={{ alignSelf: 'center', width: '89%', backgroundColor: currentTheme.white, height: '50%', padding: 30, borderRadius: 20, alignItems: 'center', top: 200 }}>
                         <Done width={100} height={100} style={{ top: 40 }} />
                         <View style={{ top: 80 }}>
-                            <Text style={{ color: currentTheme.primary, fontFamily: 'Inter_18pt-Bold', fontSize: 20, textAlign: 'center' }}>Success</Text>
-                            <Text style={{ color: currentTheme.lightGrey, fontFamily: 'Inter_18pt-Regular', fontSize: 16, textAlign: 'center', top: 6 }}>You have successfully reset your password.</Text>
+                            <Text style={{ color: currentTheme.primary, fontFamily: 'Poppins-Bold', fontSize: 20, textAlign: 'center' }}>Success</Text>
+                            <Text style={{ color: currentTheme.lightGrey, fontFamily: 'Poppins-Regular', fontSize: 16, textAlign: 'center', top: 6 }}>You have successfully reset your password.</Text>
 
                         </View>
                         <CustomButton title={'Login'} style={{ top: 110, width: 200 }} onPress={() => navigation.navigate('SignIn')} />

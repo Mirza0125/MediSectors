@@ -42,10 +42,10 @@ const StartScreen = () => {
             </View>
             <View style={styles.container}>
                 <Logo2 width={100} height={100} />
-                <Text style={{ color: currentTheme.greenColor, fontSize: 22, fontFamily: 'Montserrat-ExtraBold', top: 10 }}>MediSectors</Text>
+                <Text style={{ color: currentTheme.greenColor, fontSize: 22, fontFamily: 'Poppins-Bold', top: 10 }}>MediSectors</Text>
                 <View style={{ marginTop: 40, marginHorizontal: 70 }}>
-                    <Text style={{ color: currentTheme.primary, fontFamily: 'Inter_18pt-Bold', fontSize: 22, textAlign: 'center' }}>Let’s get started!</Text>
-                    <Text style={{ color: currentTheme.lightGrey, fontFamily: 'Inter_18pt-Regular', fontSize: 16, textAlign: 'center', top: 10 }}>Login to enjoy the features we’ve provided, and stay healthy!</Text>
+                    <Text style={{ color: currentTheme.primary, fontFamily: 'Poppins-Bold', fontSize: 22, textAlign: 'center' }}>Let’s get started!</Text>
+                    <Text style={{ color: currentTheme.lightGrey, fontFamily: 'Poppins-Regular', fontSize: 16, textAlign: 'center', top: 10 }}>Login to enjoy the features we’ve provided, and stay healthy!</Text>
                 </View>
                 <View style={{ marginTop: 60 }}>
                     <CustomButton title={'Login'} onPress={() => navigation.navigate('SignIn')} />

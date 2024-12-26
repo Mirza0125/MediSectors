@@ -1,14 +1,11 @@
 import React from 'react';
-import {StyleSheet, Platform} from 'react-native';
+import {StyleSheet, Platform, Image} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/homescreens/home/HomeScreen';
-import ChatScreen from '../screens/homescreens/home/ChatScreen';
-import ApointmentScreen from '../screens/homescreens/home/ApointmentScreen';
-import ProfileScreen from '../screens/homescreens/home/ProfileScreen';
+import ChatScreen from '../screens/homescreens/ChatScreen';
+import ApointmentScreen from '../screens/homescreens/ApointmentScreen';
+import ProfileScreen from '../screens/homescreens/ProfileScreen';
 import {COLORS} from '../services/colors';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-
 
 const Tab = createBottomTabNavigator();
 
@@ -24,8 +21,8 @@ export default function BottomNavigationScreen() {
           overflow: 'hidden',
           height: Platform.OS === 'ios' ? 92 : 78,
           backgroundColor: COLORS.white,
-          paddingHorizontal:20,
-          borderTopColor:'white'
+          paddingHorizontal: 20,
+          borderTopColor: 'white',
         },
       }}>
       <Tab.Screen
@@ -33,10 +30,13 @@ export default function BottomNavigationScreen() {
         component={HomeScreen}
         options={{
           tabBarIcon: ({focused}) => (
-            <MaterialCommunityIcons
-              name="home"
-              size={30}
-              color={focused ? COLORS.greenColor : COLORS.lightGrey}
+            <Image
+              source={
+                focused
+                  ? require('../assets/images/HomeActive.png') // Active image
+                  : require('../assets/images/Home.png') // Inactive image
+              }
+              style={styles.icon}
             />
           ),
         }}
@@ -46,10 +46,13 @@ export default function BottomNavigationScreen() {
         component={ChatScreen}
         options={{
           tabBarIcon: ({focused}) => (
-            <MaterialCommunityIcons
-              name="chat"
-              size={30}
-              color={focused ? COLORS.greenColor : COLORS.lightGrey}
+            <Image
+              source={
+                focused
+                  ? require('../assets/images/MessageActive.png')
+                  : require('../assets/images/Message.png')
+              }
+              style={styles.icon}
             />
           ),
         }}
@@ -59,11 +62,13 @@ export default function BottomNavigationScreen() {
         component={ApointmentScreen}
         options={{
           tabBarIcon: ({focused}) => (
-            <FontAwesome5
-              name="calendar"
-              size={24}
-              solid
-              color={focused ? COLORS.greenColor : COLORS.lightGrey}
+            <Image
+              source={
+                focused
+                  ? require('../assets/images/CalendarActive.png')
+                  : require('../assets/images/Calendar.png')
+              }
+              style={styles.icon}
             />
           ),
         }}
@@ -73,10 +78,13 @@ export default function BottomNavigationScreen() {
         component={ProfileScreen}
         options={{
           tabBarIcon: ({focused}) => (
-            <MaterialCommunityIcons
-              name="account"
-              size={30}
-              color={focused ? COLORS.greenColor : COLORS.lightGrey}
+            <Image
+              source={
+                focused
+                  ? require('../assets/images/ProfileActive.png')
+                  : require('../assets/images/Profile.png')
+              }
+              style={styles.icon}
             />
           ),
         }}
@@ -85,4 +93,10 @@ export default function BottomNavigationScreen() {
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  icon: {
+    width: 30, 
+    height: 30, 
+    resizeMode: 'contain',
+  },
+});

@@ -15,6 +15,10 @@ import ForgetPassword from '../screens/newauthscreens/ForgetPasswordScreens/Forg
 import VerificationCodeScreen from '../screens/newauthscreens/ForgetPasswordScreens/VerificationCodeScreen';
 import ResetPassword from '../screens/newauthscreens/ForgetPasswordScreens/ResetPassword';
 import BottomNavigationScreen from './BottomTabNavigator';
+import TopDoctors from '../screens/homescreens/home/TopDoctors';
+import FindDoctors from '../screens/homescreens/DoctorConsultation/FindDoctors';
+import DoctorDetail from '../screens/homescreens/DoctorConsultation/DoctorDetail';
+import Apointment from '../screens/homescreens/DoctorConsultation/Apointment';
 
 const Stack = createStackNavigator();
 
@@ -37,6 +41,12 @@ const MainStackNavigator = () => {
         <Stack.Screen name='VerificationScreen' component={VerificationCodeScreen} />
         <Stack.Screen name='ResetPassword' component={ResetPassword} />
         <Stack.Screen name='Home' component={BottomNavigationScreen} />
+        <Stack.Screen name='TopDoctors' component={TopDoctors} />
+        <Stack.Screen name='FindDoctor' component={FindDoctors} />
+        <Stack.Screen name='DoctorDetails' component={DoctorDetail} />
+        <Stack.Screen name='Apointment' component={Apointment} />
+
+
 
       </Stack.Navigator>
     </NavigationContainer>
