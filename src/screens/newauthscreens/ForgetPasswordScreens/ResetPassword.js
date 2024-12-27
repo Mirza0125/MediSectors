@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
         position: 'relative'
     },
     container: {
-        paddingHorizontal: 25,
+        paddingHorizontal: 18,
         paddingTop: 40
     }
 })

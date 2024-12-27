@@ -230,8 +230,9 @@ const FindDoctors = () => {
 
                             )
                         }}
-                        showsVerticalScrollIndicator={false}
+                        showsHorizontalScrollIndicator={false}
                         contentContainerStyle={{ paddingTop: 10, }}
+
                     />
                 </View>
 
@@ -281,7 +282,7 @@ const styles = StyleSheet.create({
         paddingTop: 40
     },
     container: {
-        paddingHorizontal: 24,
+        paddingHorizontal: 18,
         paddingTop: 20
 
     }

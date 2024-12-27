@@ -90,8 +90,8 @@ const TopDoctors = () => {
                         keyExtractor={item => item.id.toString()} // Ensure key is a string
                         renderItem={({ item }) => {
                             return (
-                                <View>
-                                    <Shadow style={{}} startColor={'rgba(218, 218, 218, 0.2)'} distance={10} containerStyle={{ alignItems: 'center', justifyContent: 'center', marginVertical: 8 }}>
+                                <TouchableOpacity onPress={()=> navigation.navigate('DoctorDetails')}>
+                                    <Shadow style={{}} startColor={'rgba(227, 226, 226, 0.2)'} distance={10} containerStyle={{ alignItems: 'center', justifyContent: 'center', marginVertical: 8 }}>
 
                                         <View style={{
                                             width: 354, height: 125, borderRadius: 14, borderColor: COLORS.searchBorderColor, borderWidth: 1, flexDirection: 'row', paddingHorizontal: 4
@@ -137,7 +137,7 @@ const TopDoctors = () => {
 
                                         </View>
                                     </Shadow>
-                                </View>
+                                </TouchableOpacity>
 
                             )
                         }}
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
         paddingTop: 40
     },
     container: {
-        paddingHorizontal: 24,
+        paddingHorizontal: 18,
         paddingTop: 10
 
     }

@@ -3,7 +3,7 @@ import {StyleSheet, Platform, Image} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/homescreens/home/HomeScreen';
 import ChatScreen from '../screens/homescreens/ChatScreen';
-import ApointmentScreen from '../screens/homescreens/ApointmentScreen';
+import ApointmentScreen from '../screens/homescreens/Apointments/ApointmentScreen';
 import ProfileScreen from '../screens/homescreens/ProfileScreen';
 import {COLORS} from '../services/colors';
 
@@ -84,7 +84,8 @@ export default function BottomNavigationScreen() {
                   ? require('../assets/images/ProfileActive.png')
                   : require('../assets/images/Profile.png')
               }
-              style={styles.icon}
+              style={{width:25, height:25}}
+              resizeMode='contain'
             />
           ),
         }}

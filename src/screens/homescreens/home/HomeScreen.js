@@ -13,22 +13,29 @@ const data = [
     {
         id: 1,
         name: 'Doctor',
-        icon: require('../../../assets/images/Doctor.png')
+        icon: require('../../../assets/images/Doctor.png'),
+        navigationScreen: 'FindDoctor',
     },
     {
         id: 2,
         name: 'Pharmacy',
-        icon: require('../../../assets/images/Pharmacy.png')
+        icon: require('../../../assets/images/Pharmacy.png'),
+        navigationScreen: 'FindDoctor',
+
     },
     {
         id: 3,
         name: 'Hospital',
-        icon: require('../../../assets/images/Hospital.png')
+        icon: require('../../../assets/images/Hospital.png'),
+        navigationScreen: 'FindDoctor',
+
     },
     {
         id: 4,
         name: 'Ambulance',
-        icon: require('../../../assets/images/Ambulance.png')
+        icon: require('../../../assets/images/Ambulance.png'),
+        navigationScreen: 'FindDoctor',
+
     },
 ]
 
@@ -98,7 +105,7 @@ const data3 = [
         title: 'Comparing the AstraZeneca and Sinovac COVID-19 Vaccines',
         time: '6 min read',
         date: 'Jun 12, 2021',
-        profile: require('../../../assets/images/article1.png')
+        profile: require('../../../assets/images/Article1.png')
     },
     {
         id: 2,
@@ -130,8 +137,7 @@ const HomeScreen = () => {
     const navigation = useNavigation()
     return (
         <SafeAreaView style={styles.safeArea}>
-            <ScrollView>
-
+            <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.container}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 20 }}>
                         <View style={{ width: 200 }}>
@@ -150,8 +156,7 @@ const HomeScreen = () => {
                             <TouchableOpacity>
                                 <AntDesign name='search1' size={22} color={COLORS.lightGrey} />
                             </TouchableOpacity>
-                            <TextInput placeholder='Search doctor, drugs, articles...' placeholderTextColor={COLORS.lightGrey} style={{ left: 5, width: 300, color: COLORS.primary, fontFamily: 'Poppins-Regular' , top:2}} />
-
+                            <TextInput placeholder='Search doctor, drugs, articles...' placeholderTextColor={COLORS.lightGrey} style={{ left: 5, width: 300, color: COLORS.primary, fontFamily: 'Poppins-Regular', top: 2 }} />
                         </View>
 
                     </View>
@@ -162,7 +167,7 @@ const HomeScreen = () => {
                                 keyExtractor={item => item.id.toString()} // Ensure key is a string
                                 renderItem={({ item }) => {
                                     return (
-                                        <TouchableOpacity style={{ marginHorizontal: 13 }}>
+                                        <TouchableOpacity style={{ marginHorizontal: 13 }} onPress={() => navigation.navigate(item.navigationScreen)}>
                                             <Shadow style={{}} startColor={'rgba(218, 218, 218, 0.2)'} distance={10} >
 
                                                 <View style={{
@@ -215,7 +220,7 @@ const HomeScreen = () => {
                         }}>
                             Top Doctor
                         </Text>
-                        <TouchableOpacity onPress={()=>navigation.navigate('TopDoctors')}>
+                        <TouchableOpacity onPress={() => navigation.navigate('TopDoctors')}>
                             <Text style={{
                                 color: COLORS.greenColor, fontFamily: 'Poppins-Medium', fontSize: 14,
                             }}>
@@ -229,51 +234,52 @@ const HomeScreen = () => {
                         keyExtractor={item => item.id.toString()} // Ensure key is a string
                         renderItem={({ item }) => {
                             return (
-                                <View style={{ marginLeft: 10 }}>
-                                    <Shadow style={{}} startColor={'rgba(218, 218, 218, 0.2)'} distance={10} >
+                                <View style={{ marginLeft: 10, }}>
+                                    <Shadow style={{ borderRadius: 12, }} startColor={'rgba(218, 218, 218, 0.2)'} distance={10} >
+                                        <TouchableOpacity onPress={() => navigation.navigate('DoctorDetails')}>
 
-                                        <View style={{
-                                            width: 134, height: 180, borderRadius: 14, borderColor: COLORS.searchBorderColor, borderWidth: 1, paddingHorizontal: 6, margin: 0, padding: 8,
-                                            marginHorizontal: 6,
-                                            right: 6
-                                        }}>
-                                            <View style={{ width: 72, height: 72, borderRadius: 36, backgroundColor: COLORS.searchBarColor, justifyContent: 'center', alignItems: 'center', alignSelf: 'center', marginTop: 10 }}>
-                                                <Image source={item.profile} resizeMode='cover' style={{ width: 71, height: 71 }} borderRadius={40} />
-                                            </View>
-                                            <View style={{ marginTop: 16, left: 2 }}>
-                                                <Text style={{
-                                                    color: COLORS.primary, fontFamily: 'Poppins-Bold', fontSize: 12,
-                                                }}>
-                                                    {item.name}
-                                                </Text>
-                                            </View>
-                                            <View style={{ marginTop: 3, left: 2 }}>
-                                                <Text style={{
-                                                    color: COLORS.lightGrey, fontFamily: 'Poppins-Regular', fontSize: 12
-                                                }}>
-                                                    {item.category}
-                                                </Text>
-                                            </View>
-                                            <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 4, left: 2 }}>
-                                                <View style={{ flexDirection: 'row', alignItems: 'center', width: 40, backgroundColor: COLORS.lightGreen2, paddingVertical: 2, borderRadius: 5, paddingHorizontal: 3 }}>
-                                                    <FontAwesome name='star' color={COLORS.greenColor} size={12} />
+                                            <View style={{
+                                                width: 138, height: 185, borderRadius: 14, borderColor: COLORS.searchBorderColor, borderWidth: 1, paddingHorizontal: 6, margin: 0, padding: 8,
+                                            }}>
+                                                <View style={{ width: 72, height: 72, borderRadius: 36, backgroundColor: COLORS.searchBarColor, justifyContent: 'center', alignItems: 'center', alignSelf: 'center', marginTop: 10 }}>
+                                                    <Image source={item.profile} resizeMode='cover' style={{ width: 71, height: 71 }} borderRadius={40} />
+                                                </View>
+                                                <View style={{ marginTop: 16, left: 2 }}>
                                                     <Text style={{
-                                                        color: COLORS.greenColor, fontFamily: 'Poppins-Bold', fontSize: 10, left: 3, top:1
+                                                        color: COLORS.primary, fontFamily: 'Poppins-Bold', fontSize: 12,
                                                     }}>
-                                                        {item.rating}
+                                                        {item.name}
                                                     </Text>
                                                 </View>
-                                                <View style={{ flexDirection: 'row', alignItems: 'center', left:2}}>
-                                                    <Image source={require('../../../assets/images/Location.png')} resizeMode='contain' style={{ width: 10, height: 10 }} />
+                                                <View style={{ marginTop: 3, left: 2 }}>
                                                     <Text style={{
-                                                        color: COLORS.lightGrey, fontFamily: 'Poppins-Regular', fontSize: 9, left: 2, top:2
+                                                        color: COLORS.lightGrey, fontFamily: 'Poppins-Regular', fontSize: 12
                                                     }}>
-                                                        {item.distance}
+                                                        {item.category}
                                                     </Text>
                                                 </View>
-                                            </View>
+                                                <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 4, left: 2 }}>
+                                                    <View style={{ flexDirection: 'row', alignItems: 'center', width: 40, backgroundColor: COLORS.lightGreen2, paddingVertical: 2, borderRadius: 5, paddingHorizontal: 3 }}>
+                                                        <FontAwesome name='star' color={COLORS.greenColor} size={12} />
+                                                        <Text style={{
+                                                            color: COLORS.greenColor, fontFamily: 'Poppins-Bold', fontSize: 10, left: 3, top: 1
+                                                        }}>
+                                                            {item.rating}
+                                                        </Text>
+                                                    </View>
+                                                    <View style={{ flexDirection: 'row', alignItems: 'center', left: 2 }}>
+                                                        <Image source={require('../../../assets/images/Location.png')} resizeMode='contain' style={{ width: 10, height: 10 }} />
+                                                        <Text style={{
+                                                            color: COLORS.lightGrey, fontFamily: 'Poppins-Regular', fontSize: 9, left: 2, top: 2
+                                                        }}>
+                                                            {item.distance}
+                                                        </Text>
+                                                    </View>
+                                                </View>
 
-                                        </View>
+                                            </View>
+                                        </TouchableOpacity>
+
                                     </Shadow>
                                 </View>
 
@@ -293,7 +299,7 @@ const HomeScreen = () => {
                         }}>
                             Health article
                         </Text>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={()=> navigation.navigate('Articles')}>
                             <Text style={{
                                 color: COLORS.greenColor, fontFamily: 'Poppins-Medium', fontSize: 14,
                             }}>
@@ -308,7 +314,7 @@ const HomeScreen = () => {
                         renderItem={({ item }) => {
                             return (
                                 <View>
-                                    <Shadow style={{}} startColor={'rgba(218, 218, 218, 0.2)'} distance={10} containerStyle={{ alignItems: 'center', justifyContent: 'center', marginVertical:8 }}>
+                                    <Shadow style={{}} startColor={'rgba(218, 218, 218, 0.2)'} distance={10} containerStyle={{ alignItems: 'center', justifyContent: 'center', marginVertical: 8 }}>
 
                                         <View style={{
                                             width: 354, height: 80, borderRadius: 14, borderColor: COLORS.searchBorderColor, borderWidth: 1, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 4
@@ -339,7 +345,7 @@ const HomeScreen = () => {
 
                                             </View>
                                             <View style={{}}>
-                                                <Image source={require('../../../assets/images/Bookmark.png')} resizeMode='contain' style={{ width: 20, height: 22,  bottom: 13 , left:20}} />
+                                                <Image source={require('../../../assets/images/Bookmark.png')} resizeMode='contain' style={{ width: 20, height: 22, bottom: 13, left: 20 }} />
 
                                             </View>
 
@@ -351,7 +357,7 @@ const HomeScreen = () => {
                         }}
 
                         showsVerticalScrollIndicator={false}
-                        contentContainerStyle={{ paddingVertical: 10, paddingHorizontal:5 }}
+                        contentContainerStyle={{ paddingVertical: 10, paddingHorizontal: 5 }}
                     />
                 </View>
             </ScrollView>
@@ -371,7 +377,6 @@ const styles = StyleSheet.create({
         paddingTop: 40
     },
     container: {
-        paddingHorizontal: 24,
-
+        paddingHorizontal: 18,
     }
 })

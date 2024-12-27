@@ -19,6 +19,7 @@ import TopDoctors from '../screens/homescreens/home/TopDoctors';
 import FindDoctors from '../screens/homescreens/DoctorConsultation/FindDoctors';
 import DoctorDetail from '../screens/homescreens/DoctorConsultation/DoctorDetail';
 import Apointment from '../screens/homescreens/DoctorConsultation/Apointment';
+import Articles from '../screens/homescreens/Pharmacy/Articles';
 
 const Stack = createStackNavigator();
 
@@ -45,6 +46,8 @@ const MainStackNavigator = () => {
         <Stack.Screen name='FindDoctor' component={FindDoctors} />
         <Stack.Screen name='DoctorDetails' component={DoctorDetail} />
         <Stack.Screen name='Apointment' component={Apointment} />
+        <Stack.Screen name='Articles' component={Articles} />
+
 
 
 

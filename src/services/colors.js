@@ -11,7 +11,7 @@ export const COLORS = {
   inputFieldBorder : 'rgba(229, 231, 235, 1)',
   modalOverlay : 'rgba(16, 22, 35, 0.5)',
   searchBorderColor : 'rgb(228, 227, 227)',
-  searchBarColor : 'rgb(236, 236, 236)',
+  searchBarColor : 'rgb(237, 237, 237)',
   lightGreen2 : 'rgba(232, 243, 241, 1)'
 
 
