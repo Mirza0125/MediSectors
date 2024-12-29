@@ -17,7 +17,7 @@ const SocialField = (props) => {
       alignItems: 'center',
       borderWidth: 1,
       borderColor: currentTheme.inputFieldBorder,
-      backgroundColor: currentTheme.white,
+      backgroundColor: currentTheme.socialField,
       borderRadius: 30,
       paddingHorizontal: 20,
       height: 60,

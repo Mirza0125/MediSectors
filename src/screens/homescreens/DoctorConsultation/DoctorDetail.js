@@ -10,6 +10,8 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import DayDate from '../../../components/DayDate';
 import ChatButton from '../../../assets/images/Button_Chat.svg'
 import CustomButton from '../../../components/CustomButton';
+import { useSelector } from 'react-redux';
+import { lightTheme, darkTheme } from '../../../redux/theme/theme';
 
 const data = [
     {
@@ -78,19 +80,21 @@ const DoctorDetail = () => {
 
     const shortText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...";
     const fullText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam sed do eiusmod tempor incididunt ut labore et dolore magna aliqua";
-
+    const theme = useSelector(state => state.theme.theme)
+    const currentTheme = theme === 'light' ? lightTheme : darkTheme;
+    
     return (
-        <SafeAreaView style={styles.safeArea}>
+        <SafeAreaView style={[styles.safeArea,{backgroundColor:currentTheme.background}]}>
 
             <View style={styles.container}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
 
                     <TouchableOpacity onPress={() => navigation.goBack()}>
-                        <Entypo name='chevron-thin-left' size={20} color={COLORS.primary} />
+                        <Entypo name='chevron-thin-left' size={20} color={currentTheme.primary} />
                     </TouchableOpacity>
-                    <Text style={{ color: COLORS.primary, fontFamily: 'Poppins-Medium', fontSize: 18 }}>Doctor Detail</Text>
+                    <Text style={{ color: currentTheme.primary, fontFamily: 'Poppins-Medium', fontSize: 18 }}>Doctor Detail</Text>
                     <TouchableOpacity>
-                        <Entypo name='dots-three-vertical' size={20} color={COLORS.primary} />
+                        <Entypo name='dots-three-vertical' size={20} color={currentTheme.primary} />
                     </TouchableOpacity>
                 </View>
                 <View style={{ marginTop: 34 }}>
@@ -103,7 +107,7 @@ const DoctorDetail = () => {
 
                         <View style={{ left: 26, top: 4 }}>
                             <Text style={{
-                                color: COLORS.primary, fontFamily: 'Poppins-Bold', fontSize: 16,
+                                color: currentTheme.primary, fontFamily: 'Poppins-Bold', fontSize: 16,
                             }}>
                                 Dr. Marcus Horizon
                             </Text>
@@ -114,7 +118,7 @@ const DoctorDetail = () => {
                                 }}>
                                     Chardiologist
                                 </Text>
-                                <View style={{ flexDirection: 'row', alignItems: 'center', width: 40, backgroundColor: COLORS.lightGreen2, paddingVertical: 2, borderRadius: 5, paddingHorizontal: 3, marginTop: 5 }}>
+                                <View style={{ flexDirection: 'row', alignItems: 'center', width: 40, backgroundColor: currentTheme.lightGreen2, paddingVertical: 2, borderRadius: 5, paddingHorizontal: 3, marginTop: 5 }}>
                                     <FontAwesome name='star' color={COLORS.greenColor} size={12} />
                                     <Text style={{
                                         color: COLORS.greenColor, fontFamily: 'Poppins-Bold', fontSize: 10, left: 5, top: 1
@@ -137,7 +141,7 @@ const DoctorDetail = () => {
                     </View>
                 </View>
                 <View style={{ marginTop: 25 }}>
-                    <Text style={{ color: COLORS.primary, fontFamily: 'Poppins-Bold', fontSize: 16 }}>About</Text>
+                    <Text style={{ color: currentTheme.primary, fontFamily: 'Poppins-Bold', fontSize: 16 }}>About</Text>
                     <Text style={{ color: COLORS.lightGrey, fontFamily: 'Poppins-Regular', flexWrap: 'wrap', flexDirection: 'row' }}>
                         {isExpanded ? fullText : shortText}
                         <Text onPress={toggleReadMore} style={{ color: COLORS.greenColor, fontFamily: 'Poppins-Regular' }}>
@@ -164,7 +168,7 @@ const DoctorDetail = () => {
                                     date1={dynamicDate.getDate()}
                                     isToday={dynamicDate.getDate() === todayDate}
                                     selected={COLORS.greenColor}
-                                    container={COLORS.background}
+                                    container={currentTheme.categories}
                                 />
                             );
                         })}
@@ -180,13 +184,13 @@ const DoctorDetail = () => {
                             return (
                                 <TouchableOpacity disabled={item.disabled} onPress={() => setSelected(item.id)}>
                                     <View style={{
-                                        width: 103, height: 37, borderRadius: 12, borderWidth: 1, borderColor: item.disabled ? '#DEECE9' : selected === item.id
-                                            ? COLORS.greenColor : '#B3D3CE', backgroundColor: selected === item.id ? COLORS.greenColor : COLORS.background, alignItems: 'center', justifyContent: 'center', margin: 8
+                                        width: 103, height: 37, borderRadius: 12, borderWidth: 1, borderColor: item.disabled ? 'rgba(240, 240, 240, 1)' : selected === item.id
+                                            ? COLORS.greenColor : '#B3D3CE', backgroundColor: selected === item.id ? COLORS.greenColor : currentTheme.background, alignItems: 'center', justifyContent: 'center', margin: 8
                                     }}>
                                         <Text
                                             style={{
                                                 color: item.disabled
-                                                    ? '#DEECE9'
+                                                    ? 'rgba(240, 240, 240, 1)'
                                                     : selected === item.id
                                                         ? COLORS.white
                                                         : COLORS.lightGrey,

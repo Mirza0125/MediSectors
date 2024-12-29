@@ -27,7 +27,6 @@ const SplashTwo = () => {
       </View>
       <OnBoardingModal text={'Consult only with a doctor you trust'} onPress={()=> navigation.navigate('SplashThree')} one={true} />
     </SafeAreaView>
-
   )
 }
 

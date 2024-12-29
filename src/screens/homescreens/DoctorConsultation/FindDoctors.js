@@ -13,6 +13,8 @@ import Dentist from '../../../assets/images/Dentist.svg'
 import Lungs from '../../../assets/images/Lungs.svg'
 import Covid from '../../../assets/images/Group.svg'
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { useSelector } from 'react-redux';
+import { lightTheme, darkTheme } from '../../../redux/theme/theme';
 
 const data = [
     {
@@ -90,7 +92,7 @@ const data2 = [
 const data3 = [
     {
         id: 1,
-        name: 'Dr Marcus',  
+        name: 'Dr Marcus',
         profile: require('../../../assets/images/doctor1.png')
     },
     {
@@ -113,27 +115,30 @@ const data3 = [
 ]
 const FindDoctors = () => {
     const navigation = useNavigation()
+    const theme = useSelector(state => state.theme.theme)
+    const currentTheme = theme === 'light' ? lightTheme : darkTheme;
+
     return (
-        <SafeAreaView style={styles.safeArea}>
+        <SafeAreaView style={[styles.safeArea,{backgroundColor:currentTheme.background}]}>
             <View style={styles.container}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
 
                     <TouchableOpacity onPress={() => navigation.goBack()}>
-                        <Entypo name='chevron-thin-left' size={20} color={COLORS.primary} />
+                        <Entypo name='chevron-thin-left' size={20} color={currentTheme.primary} />
                     </TouchableOpacity>
-                    <Text style={{ color: COLORS.primary, fontFamily: 'Poppins-Medium', fontSize: 18, right: 5 }}>Find Doctors</Text>
+                    <Text style={{ color: currentTheme.primary, fontFamily: 'Poppins-Medium', fontSize: 18, right: 5 }}>Find Doctors</Text>
                     <View style={{}}></View>
                 </View>
                 <View style={{ marginTop: 25 }}>
-                    <View style={{ width: '100%', height: 44, borderWidth: 1, borderColor: COLORS.searchBorderColor, borderRadius: 22, alignItems: 'center', flexDirection: 'row', paddingHorizontal: 20, backgroundColor: COLORS.searchBarColor }}>
+                    <View style={{ width: '100%', height: 44, borderWidth: 1, borderColor: currentTheme.searchBorderColor, borderRadius: 22, alignItems: 'center', flexDirection: 'row', paddingHorizontal: 20, backgroundColor: currentTheme.searchBarColor }}>
                         <TouchableOpacity>
                             <AntDesign name='search1' size={22} color={COLORS.lightGrey} />
                         </TouchableOpacity>
-                        <TextInput placeholder='Find a Doctor' placeholderTextColor={COLORS.lightGrey} style={{ left: 5, width: 300, color: COLORS.primary, fontFamily: 'Poppins-Regular', top: 2 }} />
+                        <TextInput placeholder='Find a Doctor' placeholderTextColor={COLORS.lightGrey} style={{ left: 5, width: 300, color: currentTheme.primary, fontFamily: 'Poppins-Regular', top: 2 }} />
                     </View>
                 </View>
                 <View style={{ marginTop: 30 }}>
-                    <Text style={{ fontFamily: 'Poppins-Medium', color: COLORS.primary, fontSize: 16, left: 5 }}>Category</Text>
+                    <Text style={{ fontFamily: 'Poppins-Medium', color: currentTheme.primary, fontSize: 16, left: 5 }}>Category</Text>
                     <FlatList
                         data={data}
                         keyExtractor={item => item.id.toString()} // Ensure key is a string
@@ -141,12 +146,12 @@ const FindDoctors = () => {
                             const Icon = item.icon; // Access the icon component dynamically
                             return (
                                 <TouchableOpacity style={{ marginHorizontal: 14, marginVertical: 10 }}>
-                                    <Shadow style={{}} startColor={'rgba(232, 232, 232, 0.2)'} distance={10} >
+                                    <Shadow style={{}} startColor={currentTheme.shadow} distance={10} >
 
                                         <View style={{
                                             width: 65,
                                             height: 55,
-                                            backgroundColor: COLORS.white,
+                                            backgroundColor: currentTheme.categories,
                                             borderRadius: 18,
                                             alignItems: 'center',
                                             justifyContent: 'center',
@@ -169,7 +174,7 @@ const FindDoctors = () => {
                     />
                 </View>
                 <View style={{ marginTop: 25 }}>
-                    <Text style={{ fontFamily: 'Poppins-Medium', color: COLORS.primary, fontSize: 16, left: 5 }}>Recommended Doctors</Text>
+                    <Text style={{ fontFamily: 'Poppins-Medium', color: currentTheme.primary, fontSize: 16, left: 5 }}>Recommended Doctors</Text>
                     <FlatList
                         horizontal
                         data={data2}
@@ -177,9 +182,9 @@ const FindDoctors = () => {
                         renderItem={({ item }) => {
                             return (
                                 <View style={{ marginHorizontal: 5 }}>
-                                    <Shadow style={{}} startColor={'rgba(232, 232, 232, 0.2)'} distance={10} containerStyle={{ alignItems: 'center', justifyContent: 'center', marginVertical: 8 }}>
+                                    <Shadow style={{}} startColor={currentTheme.shadow} distance={10} containerStyle={{ alignItems: 'center', justifyContent: 'center', marginVertical: 8 }}>
                                         <View style={{
-                                            width: 348, height: 134, borderRadius: 14, borderColor: COLORS.searchBorderColor, borderWidth: 1, flexDirection: 'row', paddingHorizontal: 4
+                                            width: 348, height: 134, borderRadius: 14, borderColor: currentTheme.searchBorderColor, borderWidth: 1, flexDirection: 'row', paddingHorizontal: 4, backgroundColor:currentTheme.categories
                                         }}>
                                             <View style={{ width: 88, height: 88, borderRadius: 44, justifyContent: 'center', alignItems: 'center', alignSelf: 'center', left: 10, }}>
                                                 <Image source={item.profile} resizeMode='cover' style={{ width: 88, height: 88 }} borderRadius={44} />
@@ -187,7 +192,7 @@ const FindDoctors = () => {
 
                                             <View style={{ left: 40, top: 10 }}>
                                                 <Text style={{
-                                                    color: COLORS.primary, fontFamily: 'Poppins-Bold', fontSize: 16,
+                                                    color: currentTheme.primary, fontFamily: 'Poppins-Bold', fontSize: 16,
                                                 }}>
                                                     {item.name}
                                                 </Text>
@@ -202,7 +207,7 @@ const FindDoctors = () => {
 
                                                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
 
-                                                    <View style={{ flexDirection: 'row', alignItems: 'center', width: 40, backgroundColor: COLORS.lightGreen2, paddingVertical: 2, borderRadius: 5, paddingHorizontal: 3, marginTop: 5 }}>
+                                                    <View style={{ flexDirection: 'row', alignItems: 'center', width: 40, backgroundColor: currentTheme.lightGreen2, paddingVertical: 2, borderRadius: 5, paddingHorizontal: 3, marginTop: 5 }}>
                                                         <FontAwesome name='star' color={COLORS.greenColor} size={12} />
                                                         <Text style={{
                                                             color: COLORS.greenColor, fontFamily: 'Poppins-Bold', fontSize: 10, left: 5
@@ -237,31 +242,31 @@ const FindDoctors = () => {
                 </View>
 
                 <View style={{ marginTop: 25 }}>
-                    <Text style={{ fontFamily: 'Poppins-Medium', color: COLORS.primary, fontSize: 16, left: 5 }}>Your Recent Doctors</Text>
+                    <Text style={{ fontFamily: 'Poppins-Medium', color: currentTheme.primary, fontSize: 16, left: 5 }}>Your Recent Doctors</Text>
                     <FlatList
                         horizontal
                         data={data3}
                         keyExtractor={item => item.id.toString()} // Ensure key is a string
                         renderItem={({ item }) => {
                             return (
-                                    <View style={{marginHorizontal:12, marginTop:20}}>
-                                        <Image source={item.profile} resizeMode='cover' style={{ width: 64, height: 64 }} borderRadius={32} />
+                                <View style={{ marginHorizontal: 12, marginTop: 20 }}>
+                                    <Image source={item.profile} resizeMode='cover' style={{ width: 64, height: 64 }} borderRadius={32} />
 
-                                        <View style={{top: 10 }}>
-                                            <Text style={{
-                                                color: COLORS.primary, fontFamily: 'Poppins-Medium', fontSize: 14, textAlign:'center'
-                                            }}>
-                                                {item.name}
-                                            </Text>
-                                        </View>
-
-
+                                    <View style={{ top: 10 }}>
+                                        <Text style={{
+                                            color: currentTheme.primary, fontFamily: 'Poppins-Medium', fontSize: 14, textAlign: 'center'
+                                        }}>
+                                            {item.name}
+                                        </Text>
                                     </View>
+
+
+                                </View>
 
                             )
                         }}
                         showsVerticalScrollIndicator={false}
-                        contentContainerStyle={{ paddingTop: 10,paddingBottom:5 }}
+                        contentContainerStyle={{ paddingTop: 10, paddingBottom: 5 }}
                     />
                 </View>
 
@@ -278,7 +283,6 @@ const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
         position: 'relative',
-        backgroundColor: 'rgba(255, 255, 255, 1)',
         paddingTop: 40
     },
     container: {

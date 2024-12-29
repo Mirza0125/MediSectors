@@ -5,7 +5,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Upcoming from './Upcoming';
 import Completed from './Completed';
 import Canceled from './Canceled';
-
+import { useSelector } from 'react-redux';
+import { lightTheme, darkTheme } from '../../../redux/theme/theme';
 
 const ApointmentScreen = () => {
   const [upcoming, setUpComing] = useState(true)
@@ -27,35 +28,39 @@ const ApointmentScreen = () => {
     setCanceled(true)
     setCompleted(false)
   }
+
+  const theme = useSelector(state => state.theme.theme)
+  const currentTheme = theme === 'light' ? lightTheme : darkTheme;
+
   return (
-    <SafeAreaView style={styles.safeArea}>
+        <SafeAreaView style={[styles.safeArea,{backgroundColor:currentTheme.background}]}>
       <View style={styles.container}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', top: 5 }}>
-          <Text style={{ color: COLORS.primary, fontSize: 24, fontFamily: 'Poppins-Bold' }}>Schedule</Text>
+          <Text style={{ color: currentTheme.primary, fontSize: 24, fontFamily: 'Poppins-Bold' }}>Schedule</Text>
           <View style={{ bottom: 2 }}>
             <TouchableOpacity>
-              <MaterialCommunityIcons name='bell' size={22} color={COLORS.primary} />
+              <MaterialCommunityIcons name='bell' size={22} color={currentTheme.primary} />
             </TouchableOpacity>
           </View>
         </View>
-        <View style={{ width: '100%', height: 50, borderRadius: 14, backgroundColor: COLORS.lightGreen2, alignItems: 'center', justifyContent: 'space-between',  flexDirection: 'row', marginTop:28 }}>
+        <View style={{ width: '100%', height: 50, borderRadius: 14, backgroundColor: currentTheme.lightGreen2, alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row', marginTop: 28 }}>
           <TouchableOpacity onPress={toggle1}>
             <View style={{ width: 120, backgroundColor: upcoming ? COLORS.greenColor : 'transparent', alignItems: 'center', justifyContent: 'center', height: 50, borderRadius: 10 }}>
-              <Text style={{ color: upcoming ? COLORS.white : COLORS.primary, fontFamily: 'Poppins-Medium' }}>
+              <Text style={{ color: upcoming ? COLORS.white : currentTheme.primary, fontFamily: 'Poppins-Medium' }}>
                 Upcoming
               </Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity onPress={toggle2}>
             <View style={{ width: 120, backgroundColor: completed ? COLORS.greenColor : 'transparent', alignItems: 'center', justifyContent: 'center', height: 50, borderRadius: 10 }}>
-              <Text style={{ color: completed ? COLORS.white : COLORS.primary, fontFamily: 'Poppins-Medium' }}>
+              <Text style={{ color: completed ? COLORS.white : currentTheme.primary, fontFamily: 'Poppins-Medium' }}>
                 Completed
               </Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity onPress={toggle3}>
             <View style={{ width: 120, backgroundColor: canceled ? COLORS.greenColor : 'transparent', alignItems: 'center', justifyContent: 'center', height: 50, borderRadius: 10 }}>
-              <Text style={{ color: canceled ? COLORS.white : COLORS.primary, fontFamily: 'Poppins-Medium' }}>
+              <Text style={{ color: canceled ? COLORS.white : currentTheme.primary, fontFamily: 'Poppins-Medium' }}>
                 Canceled
               </Text>
             </View>

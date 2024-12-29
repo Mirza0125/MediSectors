@@ -7,7 +7,8 @@ import CustomButton from '../../../components/CustomButton';
 import { Shadow } from 'react-native-shadow-2';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
-
+import { useSelector } from 'react-redux';
+import { lightTheme, darkTheme } from '../../../redux/theme/theme';
 
 const data = [
     {
@@ -135,28 +136,31 @@ const data3 = [
 
 const HomeScreen = () => {
     const navigation = useNavigation()
+    const theme = useSelector(state => state.theme.theme)
+    const currentTheme = theme === 'light' ? lightTheme : darkTheme;
+
     return (
-        <SafeAreaView style={styles.safeArea}>
+        <SafeAreaView style={[styles.safeArea,{backgroundColor:currentTheme.background}]}>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.container}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 20 }}>
                         <View style={{ width: 200 }}>
-                            <Text style={{ color: COLORS.primary, fontFamily: 'Poppins-Bold', fontSize: 22 }}>
+                            <Text style={{ color: currentTheme.primary, fontFamily: 'Poppins-Bold', fontSize: 22 }}>
                                 Find your desire healt solution
                             </Text>
                         </View>
                         <View style={{ bottom: 2 }}>
                             <TouchableOpacity>
-                                <MaterialCommunityIcons name='bell' size={22} color={COLORS.primary} />
+                                <MaterialCommunityIcons name='bell' size={22} color={currentTheme.primary} />
                             </TouchableOpacity>
                         </View>
                     </View>
                     <View style={{ marginTop: 20 }}>
-                        <View style={{ width: '100%', height: 44, borderWidth: 1, borderColor: COLORS.searchBorderColor, borderRadius: 22, alignItems: 'center', flexDirection: 'row', paddingHorizontal: 20, backgroundColor: COLORS.searchBarColor }}>
+                        <View style={{ width: '100%', height: 44, borderWidth: 1, borderColor: currentTheme.searchBorderColor, borderRadius: 22, alignItems: 'center', flexDirection: 'row', paddingHorizontal: 20, backgroundColor: currentTheme.searchBarColor }}>
                             <TouchableOpacity>
                                 <AntDesign name='search1' size={22} color={COLORS.lightGrey} />
                             </TouchableOpacity>
-                            <TextInput placeholder='Search doctor, drugs, articles...' placeholderTextColor={COLORS.lightGrey} style={{ left: 5, width: 300, color: COLORS.primary, fontFamily: 'Poppins-Regular', top: 2 }} />
+                            <TextInput placeholder='Search doctor, drugs, articles...' placeholderTextColor={COLORS.lightGrey} style={{ left: 5, width: 300, color: currentTheme.primary, fontFamily: 'Poppins-Regular', top: 2 }} />
                         </View>
 
                     </View>
@@ -168,12 +172,12 @@ const HomeScreen = () => {
                                 renderItem={({ item }) => {
                                     return (
                                         <TouchableOpacity style={{ marginHorizontal: 13 }} onPress={() => navigation.navigate(item.navigationScreen)}>
-                                            <Shadow style={{}} startColor={'rgba(218, 218, 218, 0.2)'} distance={10} >
+                                            <Shadow style={{}} startColor={currentTheme.shadow} distance={10} >
 
                                                 <View style={{
                                                     width: 65,
                                                     height: 55,
-                                                    backgroundColor: COLORS.white,
+                                                    backgroundColor: currentTheme.categories,
                                                     borderRadius: 18,
                                                     alignItems: 'center',
                                                     justifyContent: 'center',
@@ -198,16 +202,16 @@ const HomeScreen = () => {
                 </View>
 
                 <View style={{ marginTop: 20, paddingHorizontal: 24 }}>
-                    <View style={{ width: '100%', padding: 25, backgroundColor: COLORS.lightGreen2, borderRadius: 20, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between' }}>
-                        <View style={{ width: 200 }}>
-                            <Text style={{ color: COLORS.primary, fontFamily: 'Poppins-Bold', fontSize: 20 }}>
+                    <View style={{ width: '100%', padding: 25, backgroundColor: currentTheme.lightGreen2, borderRadius: 20, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <View style={{ width: 180 }}>
+                            <Text style={{ color: currentTheme.lightGrey, fontFamily: 'Poppins-Medium', fontSize: 18 }}>
                                 Early protection for
                                 your family health
                             </Text>
                             <CustomButton title={'Learn more'} style={{ width: 150, height: 40, marginTop: 10 }} />
                         </View>
                         <View>
-                            <View style={{ width: 120, height: 120, borderRadius: 60, borderWidth: 26, borderColor: COLORS.white }}>
+                            <View style={{ width: 120, height: 120, borderRadius: 60, borderWidth: 26, borderColor: currentTheme.white }}>
                             </View>
                         </View>
 
@@ -216,7 +220,7 @@ const HomeScreen = () => {
                 <View style={{ marginTop: 20, }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 0, paddingHorizontal: 24 }}>
                         <Text style={{
-                            color: COLORS.primary, fontFamily: 'Poppins-Bold', fontSize: 16,
+                            color: currentTheme.primary, fontFamily: 'Poppins-Bold', fontSize: 16,
                         }}>
                             Top Doctor
                         </Text>
@@ -235,18 +239,18 @@ const HomeScreen = () => {
                         renderItem={({ item }) => {
                             return (
                                 <View style={{ marginLeft: 10, }}>
-                                    <Shadow style={{ borderRadius: 12, }} startColor={'rgba(218, 218, 218, 0.2)'} distance={10} >
+                                    <Shadow style={{ borderRadius: 12, marginHorizontal:5 , alignItems:'center', justifyContent:'center'}} startColor={currentTheme.shadow} distance={7} >
                                         <TouchableOpacity onPress={() => navigation.navigate('DoctorDetails')}>
-
                                             <View style={{
-                                                width: 138, height: 185, borderRadius: 14, borderColor: COLORS.searchBorderColor, borderWidth: 1, paddingHorizontal: 6, margin: 0, padding: 8,
+                                                width: 138, height: 185, borderRadius: 14, borderColor: currentTheme.searchBorderColor, borderWidth: 1, paddingHorizontal: 6,  padding: 8,right:6,
+                                                backgroundColor : currentTheme.categories
                                             }}>
                                                 <View style={{ width: 72, height: 72, borderRadius: 36, backgroundColor: COLORS.searchBarColor, justifyContent: 'center', alignItems: 'center', alignSelf: 'center', marginTop: 10 }}>
                                                     <Image source={item.profile} resizeMode='cover' style={{ width: 71, height: 71 }} borderRadius={40} />
                                                 </View>
                                                 <View style={{ marginTop: 16, left: 2 }}>
                                                     <Text style={{
-                                                        color: COLORS.primary, fontFamily: 'Poppins-Bold', fontSize: 12,
+                                                        color: currentTheme.primary, fontFamily: 'Poppins-Bold', fontSize: 12,
                                                     }}>
                                                         {item.name}
                                                     </Text>
@@ -259,7 +263,7 @@ const HomeScreen = () => {
                                                     </Text>
                                                 </View>
                                                 <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 4, left: 2 }}>
-                                                    <View style={{ flexDirection: 'row', alignItems: 'center', width: 40, backgroundColor: COLORS.lightGreen2, paddingVertical: 2, borderRadius: 5, paddingHorizontal: 3 }}>
+                                                    <View style={{ flexDirection: 'row', alignItems: 'center', width: 40, backgroundColor: currentTheme.lightGreen2, paddingVertical: 2, borderRadius: 5, paddingHorizontal: 3 }}>
                                                         <FontAwesome name='star' color={COLORS.greenColor} size={12} />
                                                         <Text style={{
                                                             color: COLORS.greenColor, fontFamily: 'Poppins-Bold', fontSize: 10, left: 3, top: 1
@@ -295,11 +299,11 @@ const HomeScreen = () => {
                 <View style={{ flex: 1, marginTop: 20, paddingHorizontal: 24 }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
                         <Text style={{
-                            color: COLORS.primary, fontFamily: 'Poppins-Bold', fontSize: 16,
+                            color: currentTheme.primary, fontFamily: 'Poppins-Bold', fontSize: 16,
                         }}>
                             Health article
                         </Text>
-                        <TouchableOpacity onPress={()=> navigation.navigate('Articles')}>
+                        <TouchableOpacity onPress={() => navigation.navigate('Articles')}>
                             <Text style={{
                                 color: COLORS.greenColor, fontFamily: 'Poppins-Medium', fontSize: 14,
                             }}>
@@ -313,11 +317,12 @@ const HomeScreen = () => {
                         keyExtractor={item => item.id.toString()} // Ensure key is a string
                         renderItem={({ item }) => {
                             return (
-                                <View>
-                                    <Shadow style={{}} startColor={'rgba(218, 218, 218, 0.2)'} distance={10} containerStyle={{ alignItems: 'center', justifyContent: 'center', marginVertical: 8 }}>
+                                <View style={{alignSelf:'center'}}>
+                                    <Shadow style={{}} startColor={currentTheme.shadow} distance={10} containerStyle={{ alignItems: 'center', justifyContent: 'center', marginVertical: 8, width: 350 }}>
 
                                         <View style={{
-                                            width: 354, height: 80, borderRadius: 14, borderColor: COLORS.searchBorderColor, borderWidth: 1, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 4
+                                            width: 350, height: 80, borderRadius: 14, borderColor: currentTheme.searchBorderColor, borderWidth: 1, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 4,
+                                            backgroundColor: currentTheme.categories
                                         }}>
                                             <View style={{ width: 70, height: 70, borderRadius: 24, backgroundColor: COLORS.searchBarColor, justifyContent: 'center', alignItems: 'center', alignSelf: 'center' }}>
                                                 <Image source={item.profile} resizeMode='cover' style={{ width: 70, height: 70 }} borderRadius={10} />
@@ -325,7 +330,7 @@ const HomeScreen = () => {
 
                                             <View style={{ width: 220, left: 10 }}>
                                                 <Text style={{
-                                                    color: COLORS.primary, fontFamily: 'Poppins-Bold', fontSize: 12,
+                                                    color: currentTheme.primary, fontFamily: 'Poppins-Bold', fontSize: 12,
                                                 }}>
                                                     {item.title}
                                                 </Text>
@@ -357,7 +362,7 @@ const HomeScreen = () => {
                         }}
 
                         showsVerticalScrollIndicator={false}
-                        contentContainerStyle={{ paddingVertical: 10, paddingHorizontal: 5 }}
+                        contentContainerStyle={{ paddingVertical: 10}}
                     />
                 </View>
             </ScrollView>

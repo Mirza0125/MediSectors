@@ -13,35 +13,37 @@ import CustomButton from '../../../components/CustomButton';
 import Calendar from '../../../assets/images/calendar.svg';
 import Reason from '../../../assets/images/reason.svg'
 import Done from '../../../assets/images/Done.svg'
-
-
-
+import { useSelector } from 'react-redux';
+import { lightTheme, darkTheme } from '../../../redux/theme/theme';
 
 const Apointment = () => {
     const navigation = useNavigation()
     const [modalVisible, setModalVisible] = useState(false)
+    const theme = useSelector(state => state.theme.theme)
+    const currentTheme = theme === 'light' ? lightTheme : darkTheme;
 
     return (
-        <SafeAreaView style={styles.safeArea}>
+        <SafeAreaView style={[styles.safeArea,{backgroundColor:currentTheme.background}]}>
 
             <View style={styles.container}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
 
                     <TouchableOpacity onPress={() => navigation.goBack()}>
-                        <Entypo name='chevron-thin-left' size={20} color={COLORS.primary} />
+                        <Entypo name='chevron-thin-left' size={20} color={currentTheme.primary} />
                     </TouchableOpacity>
-                    <Text style={{ color: COLORS.primary, fontFamily: 'Poppins-Medium', fontSize: 18 }}>Appointment</Text>
+                    <Text style={{ color: currentTheme.primary, fontFamily: 'Poppins-Medium', fontSize: 18 }}>Appointment</Text>
                     <View>
                     </View>
                 </View>
-                <View style={{ marginTop: 34 }}>
+                <View style={{ marginTop: 20 }}>
                     <View style={{
                         flexDirection: 'row',
                         borderWidth: 1,
                         borderRadius: 10,
-                        borderColor: '#E8F3F1',
+                        borderColor: 'rgba(255, 255, 255, 0.3)',
                         paddingVertical: 10,
-                        paddingHorizontal: 6
+                        paddingHorizontal: 6,
+                        backgroundColor:currentTheme.categories
                     }}>
                         <View style={{ width: 115, height: 115, borderRadius: 10, justifyContent: 'center', alignItems: 'center', alignSelf: 'center', left: 3 }}>
                             <Image source={require('../../../assets/images/doctor1.png')} resizeMode='cover' style={{ width: 115, height: 115 }} borderRadius={10} />
@@ -49,7 +51,7 @@ const Apointment = () => {
 
                         <View style={{ left: 26, top: 4 }}>
                             <Text style={{
-                                color: COLORS.primary, fontFamily: 'Poppins-Bold', fontSize: 16,
+                                color: currentTheme.primary, fontFamily: 'Poppins-Bold', fontSize: 16,
                             }}>
                                 Dr. Marcus Horizon
                             </Text>
@@ -83,7 +85,7 @@ const Apointment = () => {
                 </View>
                 <View style={{ marginTop: 20 }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <Text style={{ fontFamily: 'Poppins-Bold', color: COLORS.primary, fontSize: 16 }}>Date</Text>
+                        <Text style={{ fontFamily: 'Poppins-Bold', color: currentTheme.primary, fontSize: 16 }}>Date</Text>
                         <TouchableOpacity>
                             <Text style={{ fontFamily: 'Poppins-Regular', color: '#ADADAD', fontSize: 13 }}>Change</Text>
                         </TouchableOpacity>
@@ -100,7 +102,7 @@ const Apointment = () => {
 
                 <View style={{ marginTop: 20 }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <Text style={{ fontFamily: 'Poppins-Bold', color: COLORS.primary, fontSize: 16 }}>Reason</Text>
+                        <Text style={{ fontFamily: 'Poppins-Bold', color: currentTheme.primary, fontSize: 16 }}>Reason</Text>
                         <TouchableOpacity>
                             <Text style={{ fontFamily: 'Poppins-Regular', color: '#ADADAD', fontSize: 13 }}>Change</Text>
                         </TouchableOpacity>
@@ -108,7 +110,7 @@ const Apointment = () => {
                     <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 10 }}>
                         <Reason width={36} height={36} />
                         <View style={{ left: 15 }}>
-                            <Text style={{ fontFamily: 'Poppins-Medium', color: COLORS.primary }}>Chest Pain</Text>
+                            <Text style={{ fontFamily: 'Poppins-Medium', color: currentTheme.primary }}>Chest Pain</Text>
                         </View>
                     </View>
                     <View style={{ width: '100%', height: 1, backgroundColor: '#E8F3F1', marginTop: 5 }}>
@@ -117,30 +119,30 @@ const Apointment = () => {
 
                 <View style={{ marginTop: 20 }}>
                     <View>
-                        <Text style={{ fontFamily: 'Poppins-Bold', color: COLORS.primary, fontSize: 16 }}>Payment Detail</Text>
+                        <Text style={{ fontFamily: 'Poppins-Bold', color: currentTheme.primary, fontSize: 16 }}>Payment Detail</Text>
                     </View>
                     <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 10, justifyContent: 'space-between' }}>
                         <Text style={{ fontFamily: 'Poppins-Regular', color: '#A1A8B0' }}>Consultation</Text>
-                        <Text style={{ fontFamily: 'Poppins-Medium', color: COLORS.primary }}>$60.00</Text>
+                        <Text style={{ fontFamily: 'Poppins-Medium', color: currentTheme.primary }}>$60.00</Text>
                     </View>
                     <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 10, justifyContent: 'space-between' }}>
                         <Text style={{ fontFamily: 'Poppins-Regular', color: '#A1A8B0' }}>Admin Fee</Text>
-                        <Text style={{ fontFamily: 'Poppins-Medium', color: COLORS.primary }}>$01.00</Text>
+                        <Text style={{ fontFamily: 'Poppins-Medium', color: currentTheme.primary }}>$01.00</Text>
                     </View>
                     <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 10, justifyContent: 'space-between' }}>
                         <Text style={{ fontFamily: 'Poppins-Regular', color: '#A1A8B0' }}>Aditional Discount</Text>
-                        <Text style={{ fontFamily: 'Poppins-Medium', color: COLORS.primary }}>-</Text>
+                        <Text style={{ fontFamily: 'Poppins-Medium', color: currentTheme.primary }}>-</Text>
                     </View>
                     <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 10, justifyContent: 'space-between' }}>
-                        <Text style={{ fontFamily: 'Poppins-Bold', color: COLORS.primary }}>Total</Text>
+                        <Text style={{ fontFamily: 'Poppins-Bold', color: currentTheme.primary }}>Total</Text>
                         <Text style={{ fontFamily: 'Poppins-Bold', color: COLORS.greenColor }}>$61.00</Text>
                     </View>
                     <View style={{ width: '100%', height: 1, backgroundColor: '#E8F3F1', marginTop: 5 }}>
                     </View>
                 </View>
-                <View style={{ marginTop: 14 }}>
-                    <Text style={{ fontFamily: 'Poppins-Bold', color: COLORS.primary, fontSize: 16 }}>Payment Method</Text>
-                    <View style={{ width: '100%', borderRadius: 10, borderWidth: 1, backgroundColor: COLORS.background, borderColor: '#E8F3F1', paddingHorizontal: 10, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between' }}>
+                <View style={{ top:20 }}>
+                    <Text style={{ fontFamily: 'Poppins-Bold', color: currentTheme.primary, fontSize: 16 }}>Payment Method</Text>
+                    <View style={{ width: '100%', borderRadius: 10, borderWidth: 1, backgroundColor: currentTheme.background, borderColor: 'rgb(222, 222, 222)', paddingHorizontal: 10, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', top:10 }}>
                         <TextInput placeholder='VISA' placeholderTextColor={'#1A1F71'} style={{ fontSize: 16, color: COLORS.primary, fontFamily: 'Poppins-Bold', width: 250 }} />
                         <TouchableOpacity>
                             <Text style={{ fontFamily: 'Poppins-Regular', color: '#ADADAD', fontSize: 13 }}>Change</Text>
@@ -156,10 +158,10 @@ const Apointment = () => {
                 <View>
 
                     <Text style={{ fontFamily: 'Poppins-Medium', color: '#ADADAD', fontSize: 13 }}>Total</Text>
-                    <Text style={{ fontFamily: 'Poppins-Bold', color: COLORS.primary }}>$ 61.00</Text>
+                    <Text style={{ fontFamily: 'Poppins-Bold', color: currentTheme.primary }}>$ 61.00</Text>
 
                 </View>
-                <CustomButton title={'Booking'} style={{ width: 200 , height:50}} onPress={() => setModalVisible(true)} />
+                <CustomButton title={'Booking'} style={{ width: 200, height: 50 }} onPress={() => setModalVisible(true)} />
 
             </View>
 
@@ -173,11 +175,11 @@ const Apointment = () => {
                 <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
 
 
-                    <View style={{ height: '100%', position: 'absolute', width: '100%', backgroundColor: COLORS.modalOverlay, alignItems: 'center' }}>
-                        <View style={{ alignSelf: 'center', width: '89%', backgroundColor: COLORS.white, height: '52%', padding: 30, borderRadius: 20, alignItems: 'center', top: 200 }}>
+                    <View style={{ height: '100%', position: 'absolute', width: '100%', backgroundColor: currentTheme.modalOverlay, alignItems: 'center' }}>
+                        <View style={{ alignSelf: 'center', width: '89%', backgroundColor: currentTheme.socialField, height: '52%', padding: 30, borderRadius: 20, alignItems: 'center', top: 200 }}>
                             <Done width={100} height={100} style={{ top: 30 }} />
                             <View style={{ top: 70 }}>
-                                <Text style={{ color: COLORS.primary, fontFamily: 'Poppins-Bold', fontSize: 20, textAlign: 'center' }}>Payment Success</Text>
+                                <Text style={{ color: currentTheme.primary, fontFamily: 'Poppins-Bold', fontSize: 20, textAlign: 'center' }}>Payment Success</Text>
                                 <Text style={{ color: COLORS.lightGrey, fontFamily: 'Poppins-Regular', fontSize: 16, textAlign: 'center', top: 6 }}>Your payment has been successful, you can have a consultation session with your trusted doctor</Text>
 
                             </View>

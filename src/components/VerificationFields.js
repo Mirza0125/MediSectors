@@ -19,7 +19,7 @@ const VerificationFields = ({ changetext, keyProp }) => {
         ref={e => (otpInput = e)}
         textInputStyle={{
           color: currentTheme.primary,
-          backgroundColor: 'rgba(234, 228, 228, 0.2)',
+          backgroundColor: currentTheme.verificationFields,
           borderWidth: 3,
           borderRadius: 10
         }}

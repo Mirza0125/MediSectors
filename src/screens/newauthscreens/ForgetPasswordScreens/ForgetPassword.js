@@ -56,12 +56,12 @@ const ForgetPassword = () => {
                         }}
                     >
                         <TouchableOpacity onPress={toggle2}>
-                            <View style={{ width: 160, height: 48, backgroundColor: email ? currentTheme.toggleColor : 'transparent', alignItems: 'center', justifyContent: 'center', borderRadius: 25 }}>
+                            <View style={{ width: 160, height: 50, backgroundColor: email ? currentTheme.toggleColor : 'transparent', alignItems: 'center', justifyContent: 'center', borderRadius: 25 }}>
                                 <Text style={{ color: email ? currentTheme.greenColor : currentTheme.lightGrey, fontFamily: 'Poppins-Regular', fontSize: 14 }}>Email</Text>
                             </View>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={toggle}>
-                            <View style={{ width: 160, height: 48, backgroundColor: phone ? currentTheme.toggleColor : 'transparent', alignItems: 'center', justifyContent: 'center', borderRadius: 25 }}>
+                            <View style={{ width: 160, height: 50, backgroundColor: phone ? currentTheme.toggleColor : 'transparent', alignItems: 'center', justifyContent: 'center', borderRadius: 25 }}>
                                 <Text style={{ color: phone ? currentTheme.greenColor : currentTheme.lightGrey, fontFamily: 'Poppins-Regular', fontSize: 14 }}>Phone</Text>
                             </View>
                         </TouchableOpacity>

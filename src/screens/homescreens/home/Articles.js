@@ -5,8 +5,8 @@ import { useNavigation } from '@react-navigation/native';
 import { COLORS } from '../../../services/colors';
 import { Shadow } from 'react-native-shadow-2';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import { useSelector } from 'react-redux';
+import { lightTheme, darkTheme } from '../../../redux/theme/theme';
 
 const data = [
     {
@@ -103,33 +103,35 @@ const data3 = [
 
 const Articles = () => {
     const navigation = useNavigation()
+    const theme = useSelector(state => state.theme.theme)
+    const currentTheme = theme === 'light' ? lightTheme : darkTheme;
 
     return (
-        <SafeAreaView style={styles.safeArea}>
+        <SafeAreaView style={[styles.safeArea,{backgroundColor:currentTheme.background}]}>
             <ScrollView>
 
                 <View style={styles.container}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                         <TouchableOpacity onPress={() => navigation.goBack()}>
-                            <Entypo name='chevron-thin-left' size={20} color={COLORS.primary} />
+                            <Entypo name='chevron-thin-left' size={20} color={currentTheme.primary} />
                         </TouchableOpacity>
-                        <Text style={{ color: COLORS.primary, fontFamily: 'Poppins-Bold', fontSize: 18 }}>Articles</Text>
+                        <Text style={{ color: currentTheme.primary, fontFamily: 'Poppins-Bold', fontSize: 18 }}>Articles</Text>
                         <TouchableOpacity>
-                            <Entypo name='dots-three-vertical' size={20} color={COLORS.primary} />
+                            <Entypo name='dots-three-vertical' size={20} color={currentTheme.primary} />
                         </TouchableOpacity>
                     </View>
                     <View style={{ marginTop: 25 }}>
-                        <View style={{ width: '100%', height: 44, borderWidth: 1, borderColor: COLORS.searchBorderColor, borderRadius: 22, alignItems: 'center', flexDirection: 'row', paddingHorizontal: 20, backgroundColor: COLORS.searchBarColor }}>
+                        <View style={{ width: '100%', height: 44, borderWidth: 1, borderColor: currentTheme.searchBorderColor, borderRadius: 22, alignItems: 'center', flexDirection: 'row', paddingHorizontal: 20, backgroundColor: currentTheme.searchBarColor }}>
                             <TouchableOpacity>
                                 <AntDesign name='search1' size={22} color={COLORS.lightGrey} />
                             </TouchableOpacity>
-                            <TextInput placeholder='Search articles, news...' placeholderTextColor={COLORS.lightGrey} style={{ left: 5, width: 300, color: COLORS.primary, fontFamily: 'Poppins-Regular', top: 2 }} />
+                            <TextInput placeholder='Search articles, news...' placeholderTextColor={COLORS.lightGrey} style={{ left: 5, width: 300, color: currentTheme.primary, fontFamily: 'Poppins-Regular', top: 2 }} />
                         </View>
                     </View>
                 </View>
                 <View style={{}}>
                     <View style={{ paddingHorizontal: 24, marginTop: 20 }}>
-                        <Text style={{ color: COLORS.primary, fontFamily: 'Poppins-Medium', fontSize: 18 }}>Popular Articles</Text>
+                        <Text style={{ color: currentTheme.primary, fontFamily: 'Poppins-Medium', fontSize: 18 }}>Popular Articles</Text>
                     </View>
                     <FlatList
                         data={data}
@@ -137,7 +139,7 @@ const Articles = () => {
                         renderItem={({ item }) => {
                             return (
                                 <TouchableOpacity>
-                                    <View style={{ width: 120, height: 46, borderRadius: 12, backgroundColor: COLORS.greenColor, alignItems: 'center', justifyContent: 'center', marginHorizontal: 5, marginTop: 15 }}>
+                                    <View style={{ width: 120, height: 38, borderRadius: 10, backgroundColor: COLORS.greenColor, alignItems: 'center', justifyContent: 'center', marginHorizontal: 5, marginTop: 15 }}>
                                         <Text style={{ color: COLORS.white, fontFamily: 'Poppins-Medium' }}>{item.name}</Text>
                                     </View>
                                 </TouchableOpacity>
@@ -151,7 +153,7 @@ const Articles = () => {
                 </View>
                 <View style={{ paddingLeft: 10 }}>
                     <View style={{ marginTop: 20, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingRight: 24 }}>
-                        <Text style={{ color: COLORS.primary, fontFamily: 'Poppins-Medium', fontSize: 18, left: 12 }}>Trending Articles</Text>
+                        <Text style={{ color: currentTheme.primary, fontFamily: 'Poppins-Medium', fontSize: 18, left: 12 }}>Trending Articles</Text>
                         <TouchableOpacity>
                             <Text style={{ color: COLORS.greenColor, fontFamily: 'Poppins-Medium', fontSize: 14 }}>See All</Text>
                         </TouchableOpacity>
@@ -162,17 +164,17 @@ const Articles = () => {
                         keyExtractor={(item) => item.id.toString()}
                         renderItem={({ item }) => {
                             return (
-                                <Shadow style={{}} startColor={'rgba(224, 224, 224, 0.2)'} distance={10} containerStyle={{ alignItems: 'center', justifyContent: 'center', marginVertical: 8 }}>
+                                <Shadow style={{}} startColor={currentTheme.shadow} distance={10} containerStyle={{ alignItems: 'center', justifyContent: 'center', marginVertical: 8 }}>
 
-                                    <View style={{ width: 180, borderWidth: 1, borderColor: 'rgb(231, 231, 231)', borderRadius: 14, marginHorizontal: 10, paddingHorizontal: 6, paddingVertical: 10, height: 240, right: 10 }}>
+                                    <View style={{ width: 180, borderWidth: 1, borderColor: currentTheme.searchBorderColor, borderRadius: 14, marginHorizontal: 10, paddingHorizontal: 6, paddingVertical: 10, height: 246, right: 10, backgroundColor:currentTheme.categories }}>
                                         <View style={{ flex: 1 }}>
 
                                             <Image source={item.profile} style={{ width: 166, height: 87 }} resizeMode='cover' borderRadius={10} />
-                                            <Text style={{ backgroundColor: COLORS.lightGreen2, paddingHorizontal: 5, color: COLORS.greenColor, fontFamily: 'Poppins-Medium', width: 80, borderRadius: 3, marginTop: 8 }}>
+                                            <Text style={{ backgroundColor: currentTheme.lightGreen2, paddingHorizontal: 4, color: COLORS.greenColor, fontFamily: 'Poppins-Medium', width: 75, borderRadius: 3, marginTop: 10 }}>
                                                 {item.category}
                                             </Text>
-                                            <View style={{ width: 130, }}>
-                                                <Text style={{ color: COLORS.primary, fontFamily: 'Poppins-Medium', fontSize: 14 }}>
+                                            <View style={{ width: 130,top:4 }}>
+                                                <Text style={{ color: currentTheme.primary, fontFamily: 'Poppins-Medium', fontSize: 14 }}>
                                                     {item.title}
                                                 </Text>
                                             </View>
@@ -198,7 +200,7 @@ const Articles = () => {
                 <View style={{ flex: 1, marginTop: 20, paddingHorizontal: 24 }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
                         <Text style={{
-                            color: COLORS.primary, fontFamily: 'Poppins-Medium', fontSize: 16,
+                            color: currentTheme.primary, fontFamily: 'Poppins-Medium', fontSize: 16,
                         }}>
                             Related Article
                         </Text>
@@ -217,18 +219,18 @@ const Articles = () => {
                         renderItem={({ item }) => {
                             return (
                                 <View>
-                                    <Shadow style={{}} startColor={'rgba(218, 218, 218, 0.2)'} distance={10} containerStyle={{ alignItems: 'center', justifyContent: 'center', marginVertical: 8 }}>
+                                    <Shadow style={{}} startColor={currentTheme.shadow} distance={10} containerStyle={{ alignItems: 'center', justifyContent: 'center', marginVertical: 8 }}>
 
                                         <View style={{
-                                            width: 354, height: 80, borderRadius: 14, borderColor: COLORS.searchBorderColor, borderWidth: 1, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 4
+                                            width: 354, height: 80, borderRadius: 14, borderColor: currentTheme.searchBorderColor, borderWidth: 1, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 4, backgroundColor:currentTheme.categories
                                         }}>
-                                            <View style={{ width: 70, height: 70, borderRadius: 24, backgroundColor: COLORS.searchBarColor, justifyContent: 'center', alignItems: 'center', alignSelf: 'center' }}>
+                                            <View style={{ width: 70, height: 70, borderRadius: 24, backgroundColor: currentTheme.searchBarColor, justifyContent: 'center', alignItems: 'center', alignSelf: 'center' }}>
                                                 <Image source={item.profile} resizeMode='cover' style={{ width: 70, height: 70 }} borderRadius={10} />
                                             </View>
 
                                             <View style={{ width: 220, left: 10 }}>
                                                 <Text style={{
-                                                    color: COLORS.primary, fontFamily: 'Poppins-Bold', fontSize: 12,
+                                                    color: currentTheme.primary, fontFamily: 'Poppins-Bold', fontSize: 12,
                                                 }}>
                                                     {item.title}
                                                 </Text>

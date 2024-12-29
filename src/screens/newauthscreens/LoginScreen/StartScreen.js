@@ -49,7 +49,7 @@ const StartScreen = () => {
                 </View>
                 <View style={{ marginTop: 60 }}>
                     <CustomButton title={'Login'} onPress={() => navigation.navigate('SignIn')} />
-                    <CustomButton title={'Sign Up'} style={{ backgroundColor: currentTheme.white }} textStyle={{ color: currentTheme.greenColor }} onPress={() => navigation.navigate('SignUp')} />
+                    <CustomButton title={'Sign Up'} style={{ backgroundColor: currentTheme.socialField }} textStyle={{ color: currentTheme.greenColor }} onPress={() => navigation.navigate('SignUp')} />
                 </View>
             </View>
         </SafeAreaView>

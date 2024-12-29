@@ -50,7 +50,7 @@ const ResetPassword = () => {
                 <StatusBar translucent backgroundColor={currentTheme.modalOverlay} barStyle="dark-content" />
 
                 <View style={{ height: '100%', position: 'absolute', width: '100%', backgroundColor: currentTheme.modalOverlay, alignItems: 'center' }}>
-                    <View style={{ alignSelf: 'center', width: '89%', backgroundColor: currentTheme.white, height: '50%', padding: 30, borderRadius: 20, alignItems: 'center', top: 200 }}>
+                    <View style={{ alignSelf: 'center', width: '89%', backgroundColor: currentTheme.socialField, height: '50%', padding: 30, borderRadius: 20, alignItems: 'center', top: 200 }}>
                         <Done width={100} height={100} style={{ top: 40 }} />
                         <View style={{ top: 80 }}>
                             <Text style={{ color: currentTheme.primary, fontFamily: 'Poppins-Bold', fontSize: 20, textAlign: 'center' }}>Success</Text>

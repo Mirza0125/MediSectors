@@ -2,6 +2,7 @@ import { FlatList, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import ApointmentCard from '../../../components/ApointmentCard';
 
+
 const data = [
     {
         id: 1,
@@ -30,6 +31,9 @@ const data = [
 ]
 
 const Upcoming = () => {
+
+
+
     return (
         <View>
             <FlatList
@@ -37,7 +41,7 @@ const Upcoming = () => {
                 keyExtractor={(item) => item.id.toString()}
                 renderItem={({ item }) => {
                     return (
-                        <ApointmentCard name={item.name} category={item.category} profile={item.profile} buttonTitle = {'Reschedule'} status={'Confirmed'} upcomig={true} completed={false} />
+                        <ApointmentCard name={item.name} category={item.category} profile={item.profile} buttonTitle={'Reschedule'} status={'Confirmed'} upcomig={true} completed={false} />
                     )
                 }}
                 showsVerticalScrollIndicator={false}

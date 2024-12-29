@@ -9,7 +9,8 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
 import Feather from 'react-native-vector-icons/Feather'
 import Medicine from '../../../assets/images/medicine1.svg'
-
+import { useSelector } from 'react-redux';
+import { lightTheme, darkTheme } from '../../../redux/theme/theme';
 
 
 const data2 = [
@@ -105,34 +106,36 @@ const data3 = [
 
 const Pharmacy = () => {
     const navigation = useNavigation()
+    const theme = useSelector(state => state.theme.theme)
+    const currentTheme = theme === 'light' ? lightTheme : darkTheme;
+
     return (
-        <SafeAreaView style={styles.safeArea}>
-            <ScrollView showsVerticalScrollIndicator={false}>
+        <SafeAreaView style={[styles.safeArea, { backgroundColor: currentTheme.background }]}>
                 <View style={styles.container}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 20 }}>
                         <TouchableOpacity onPress={() => navigation.goBack()}>
-                            <Entypo name='chevron-thin-left' size={20} color={COLORS.primary} />
+                            <Entypo name='chevron-thin-left' size={20} color={currentTheme.primary} />
                         </TouchableOpacity>
-                        <Text style={{ color: COLORS.primary, fontFamily: 'Poppins-Bold', fontSize: 18 }}>Pharmacy</Text>
+                        <Text style={{ color: currentTheme.primary, fontFamily: 'Poppins-Bold', fontSize: 18 }}>Pharmacy</Text>
                         <TouchableOpacity>
-                            <Feather name='shopping-cart' size={20} color={COLORS.primary} />
+                            <Feather name='shopping-cart' size={20} color={currentTheme.primary} />
                         </TouchableOpacity>
                     </View>
                     <View style={{ marginTop: 20 }}>
-                        <View style={{ width: '100%', height: 44, borderWidth: 1, borderColor: COLORS.searchBorderColor, borderRadius: 22, alignItems: 'center', flexDirection: 'row', paddingHorizontal: 20, backgroundColor: COLORS.searchBarColor }}>
+                        <View style={{ width: '100%', height: 44, borderWidth: 1, borderColor: currentTheme.searchBorderColor, borderRadius: 22, alignItems: 'center', flexDirection: 'row', paddingHorizontal: 20, backgroundColor: currentTheme.searchBarColor }}>
                             <TouchableOpacity>
                                 <AntDesign name='search1' size={22} color={COLORS.lightGrey} />
                             </TouchableOpacity>
-                            <TextInput placeholder='Search drugs, category...' placeholderTextColor={COLORS.lightGrey} style={{ left: 5, width: 300, color: COLORS.primary, fontFamily: 'Poppins-Regular', top: 2 }} />
+                            <TextInput placeholder='Search drugs, category...' placeholderTextColor={COLORS.lightGrey} style={{ left: 5, width: 300, color: currentTheme.primary, fontFamily: 'Poppins-Regular', top: 2 }} />
                         </View>
 
                     </View>
                 </View>
 
                 <View style={{ marginTop: 30, paddingHorizontal: 18 }}>
-                    <View style={{ width: '100%', backgroundColor: COLORS.lightGreen2, borderRadius: 20, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 14 }}>
+                    <View style={{ width: '100%', backgroundColor: currentTheme.lightGreen2, borderRadius: 20, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 14 }}>
                         <View style={{ width: 200 }}>
-                            <Text style={{ color: COLORS.primary, fontFamily: 'Poppins-Medium', fontSize: 18 }}>
+                            <Text style={{ color: currentTheme.primary, fontFamily: 'Poppins-Medium', fontSize: 18 }}>
                                 Order quickly with
                                 Prescription
                             </Text>
@@ -146,7 +149,7 @@ const Pharmacy = () => {
                 <View style={{ marginTop: 30, }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 0, paddingHorizontal: 24 }}>
                         <Text style={{
-                            color: COLORS.primary, fontFamily: 'Poppins-Medium', fontSize: 16,
+                            color: currentTheme.primary, fontFamily: 'Poppins-Medium', fontSize: 16,
                         }}>
                             Popular Product
                         </Text>
@@ -165,17 +168,18 @@ const Pharmacy = () => {
                         renderItem={({ item }) => {
                             return (
                                 <View style={{ marginLeft: 10, }}>
-                                    <Shadow style={{ borderRadius: 12, }} startColor={'rgba(218, 218, 218, 0.2)'} distance={10} >
+                                    <Shadow style={{ borderRadius: 12, marginHorizontal:6 }} startColor={currentTheme.shadow} distance={10} >
                                         <TouchableOpacity onPress={() => navigation.navigate('MedicineDetails')}>
                                             <View style={{
-                                                width: 138, height: 185, borderRadius: 14, borderColor: COLORS.searchBorderColor, borderWidth: 1, paddingHorizontal: 6, margin: 0, padding: 8,
+                                                width: 146, height: 185, borderRadius: 14, borderColor: currentTheme.searchBorderColor, borderWidth: 1, paddingHorizontal: 6, margin: 0, padding: 8,
+                                                backgroundColor:currentTheme.categories, right:6
                                             }}>
                                                 <View style={{ top: 14 }}>
                                                     <Image source={item.profile} resizeMode='cover' style={{ width: 71, height: 80, alignSelf: 'center' }} />
                                                 </View>
                                                 <View style={{ marginTop: 24, left: 4 }}>
                                                     <Text style={{
-                                                        color: COLORS.primary, fontFamily: 'Poppins-Bold', fontSize: 12,
+                                                        color: currentTheme.primary, fontFamily: 'Poppins-Bold', fontSize: 12,
                                                     }}>
                                                         {item.name}
                                                     </Text>
@@ -189,7 +193,7 @@ const Pharmacy = () => {
                                                 </View>
                                                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', bottom: 4 }}>
                                                     <View>
-                                                        <Text style={{ color: COLORS.primary, fontFamily: 'Poppins-Bold', left: 4 }}>{item.price}</Text>
+                                                        <Text style={{ color: currentTheme.primary, fontFamily: 'Poppins-Bold', left: 4 }}>{item.price}</Text>
                                                     </View>
                                                     <TouchableOpacity>
                                                         <Entypo name='squared-plus' size={20} color={COLORS.greenColor} />
@@ -214,7 +218,7 @@ const Pharmacy = () => {
                 <View style={{ marginTop: 20, }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 0, paddingHorizontal: 24 }}>
                         <Text style={{
-                            color: COLORS.primary, fontFamily: 'Poppins-Medium', fontSize: 16,
+                            color: currentTheme.primary, fontFamily: 'Poppins-Medium', fontSize: 16,
                         }}>
                             Product on Sale
                         </Text>
@@ -233,17 +237,18 @@ const Pharmacy = () => {
                         renderItem={({ item }) => {
                             return (
                                 <View style={{ marginLeft: 10, }}>
-                                    <Shadow style={{ borderRadius: 12, }} startColor={'rgba(218, 218, 218, 0.2)'} distance={10} >
+                                    <Shadow style={{ borderRadius: 12,marginHorizontal:6 }} startColor={currentTheme.shadow} distance={10} >
                                         <TouchableOpacity onPress={() => navigation.navigate('MedicineDetails')}>
                                             <View style={{
-                                                width: 138, height: 185, borderRadius: 14, borderColor: COLORS.searchBorderColor, borderWidth: 1, paddingHorizontal: 6, margin: 0, padding: 8,
+                                                width: 146, height: 185, borderRadius: 14, borderColor: currentTheme.searchBorderColor, borderWidth: 1, paddingHorizontal: 6,  padding: 8, right:6
+                                                ,backgroundColor: currentTheme.categories
                                             }}>
                                                 <View style={{ top: 14 }}>
                                                     <Image source={item.profile} resizeMode='cover' style={{ width: 71, height: 80, alignSelf: 'center' }} />
                                                 </View>
                                                 <View style={{ marginTop: 24, left: 4 }}>
                                                     <Text style={{
-                                                        color: COLORS.primary, fontFamily: 'Poppins-Bold', fontSize: 12,
+                                                        color: currentTheme.primary, fontFamily: 'Poppins-Bold', fontSize: 12,
                                                     }}>
                                                         {item.name}
                                                     </Text>
@@ -257,7 +262,7 @@ const Pharmacy = () => {
                                                 </View>
                                                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', bottom: 4 }}>
                                                     <View>
-                                                        <Text style={{ color: COLORS.primary, fontFamily: 'Poppins-Bold', left: 4 }}>{item.price}</Text>
+                                                        <Text style={{ color: currentTheme.primary, fontFamily: 'Poppins-Bold', left: 4 }}>{item.price}</Text>
                                                     </View>
                                                     <View>
                                                         <Text style={{
@@ -286,7 +291,6 @@ const Pharmacy = () => {
                         contentContainerStyle={{ paddingHorizontal: 16, paddingVertical: 10 }}
                     />
                 </View>
-            </ScrollView>
 
         </SafeAreaView>
 

@@ -24,6 +24,8 @@ import Pharmacy from '../screens/homescreens/Pharmacy/Pharmacy';
 import MedicineDetails from '../screens/homescreens/Pharmacy/MedicineDetails';
 import MyCart from '../screens/homescreens/Pharmacy/MyCart';
 import { CardStyleInterpolators } from '@react-navigation/stack';
+import Ambulance from '../screens/homescreens/Ambulance/Ambulance';
+import { lightTheme, darkTheme } from '../redux/theme/theme';
 
 const Stack = createStackNavigator();
 
@@ -31,17 +33,20 @@ const Stack = createStackNavigator();
 const MainStackNavigator = () => {
   // const auth = useSelector(state => state.auth);
   // console.log('token.............', auth)
+   const theme = useSelector(state => state.theme.theme)
+      const currentTheme = theme === 'light' ? lightTheme : darkTheme;
   return (
     // auth.token ? <DashboardNavigator /> : <AuthNavigator />
     <NavigationContainer>
       <Stack.Navigator screenOptions={{
         headerShown:false,
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-        cardStyle: { backgroundColor: 'white' },
+        cardStyle: { backgroundColor: currentTheme.background },
         headerMode: 'screen',
         headerBackTitle: ' ',
         headerBackTitleStyle: {
-          color: '#fff',
+          color: currentTheme.background,
+          backgroundColor : currentTheme.background
         },
       }}>
         <Stack.Screen name='SplashOne' component={SplashOne} />
@@ -63,7 +68,7 @@ const MainStackNavigator = () => {
         <Stack.Screen name='Pharmacy' component={Pharmacy} />
         <Stack.Screen name='MedicineDetails' component={MedicineDetails} />
         <Stack.Screen name='MyCart' component={MyCart} />
-        {/* <Stack.Screen name='Ambulance' component={Ambulance} /> */}
+        <Stack.Screen name='Ambulance' component={Ambulance} />
 
 
 

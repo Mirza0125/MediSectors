@@ -7,6 +7,8 @@ import { Shadow } from 'react-native-shadow-2';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import { useSelector } from 'react-redux';
+import { lightTheme, darkTheme } from '../../../redux/theme/theme';
 
 const data2 = [
     {
@@ -70,31 +72,32 @@ const data2 = [
 
 const TopDoctors = () => {
     const navigation = useNavigation()
-    return (
-        <SafeAreaView style={styles.safeArea}>
+    const theme = useSelector(state => state.theme.theme)
+    const currentTheme = theme === 'light' ? lightTheme : darkTheme;
 
+    return (
+        <SafeAreaView style={[styles.safeArea,{backgroundColor:currentTheme.background}]}>
             <View style={styles.container}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-
                     <TouchableOpacity onPress={() => navigation.goBack()}>
-                        <Entypo name='chevron-thin-left' size={20} color={COLORS.primary} />
+                        <Entypo name='chevron-thin-left' size={20} color={currentTheme.primary} />
                     </TouchableOpacity>
-                    <Text style={{ color: COLORS.primary, fontFamily: 'Poppins-Bold', fontSize: 18 }}>Top Doctors</Text>
+                    <Text style={{ color: currentTheme.primary, fontFamily: 'Poppins-Bold', fontSize: 18 }}>Top Doctors</Text>
                     <TouchableOpacity>
-                        <Entypo name='dots-three-vertical' size={20} color={COLORS.primary} />
+                        <Entypo name='dots-three-vertical' size={20} color={currentTheme.primary} />
                     </TouchableOpacity>
                 </View>
-                <View>
+                <View style={{ alignSelf: 'center' }}>
                     <FlatList
                         data={data2}
                         keyExtractor={item => item.id.toString()} // Ensure key is a string
                         renderItem={({ item }) => {
                             return (
-                                <TouchableOpacity onPress={()=> navigation.navigate('DoctorDetails')}>
-                                    <Shadow style={{}} startColor={'rgba(227, 226, 226, 0.2)'} distance={10} containerStyle={{ alignItems: 'center', justifyContent: 'center', marginVertical: 8 }}>
-
+                                <TouchableOpacity onPress={() => navigation.navigate('DoctorDetails')}>
+                                    <Shadow style={{}} startColor={currentTheme.shadow} distance={10} containerStyle={{ alignItems: 'center', justifyContent: 'center', marginVertical: 8, width: 350 }}>
                                         <View style={{
-                                            width: 354, height: 125, borderRadius: 14, borderColor: COLORS.searchBorderColor, borderWidth: 1, flexDirection: 'row', paddingHorizontal: 4
+                                            width: 350, height: 125, borderRadius: 14, borderColor: currentTheme.searchBorderColor, borderWidth: 1, flexDirection: 'row', paddingHorizontal: 4,
+                                            backgroundColor:currentTheme.categories
                                         }}>
                                             <View style={{ width: 110, height: 110, borderRadius: 10, justifyContent: 'center', alignItems: 'center', alignSelf: 'center', left: 3 }}>
                                                 <Image source={item.profile} resizeMode='cover' style={{ width: 110, height: 110 }} borderRadius={10} />
@@ -102,7 +105,7 @@ const TopDoctors = () => {
 
                                             <View style={{ left: 20, top: 10 }}>
                                                 <Text style={{
-                                                    color: COLORS.primary, fontFamily: 'Poppins-Bold', fontSize: 16,
+                                                    color: currentTheme.primary, fontFamily: 'Poppins-Bold', fontSize: 16,
                                                 }}>
                                                     {item.name}
                                                 </Text>
@@ -113,7 +116,7 @@ const TopDoctors = () => {
                                                     }}>
                                                         {item.category}.
                                                     </Text>
-                                                    <View style={{ flexDirection: 'row', alignItems: 'center', width: 40, backgroundColor: COLORS.lightGreen2, paddingVertical: 2, borderRadius: 5, paddingHorizontal: 3 , marginTop:5}}>
+                                                    <View style={{ flexDirection: 'row', alignItems: 'center', width: 40, backgroundColor: currentTheme.lightGreen2, paddingVertical: 2, borderRadius: 5, paddingHorizontal: 3, marginTop: 5 }}>
                                                         <FontAwesome name='star' color={COLORS.greenColor} size={12} />
                                                         <Text style={{
                                                             color: COLORS.greenColor, fontFamily: 'Poppins-Bold', fontSize: 10, left: 5
@@ -125,7 +128,7 @@ const TopDoctors = () => {
                                                         <Image source={require('../../../assets/images/Location.png')} resizeMode='contain' style={{ width: 12, height: 12 }} />
                                                         <Text style={{
                                                             color: COLORS.lightGrey, fontFamily: 'Poppins-Medium', fontSize: 12, left: 5,
-                                                            top:2
+                                                            top: 2
                                                         }}>
                                                             {item.distance}
                                                         </Text>
@@ -143,7 +146,7 @@ const TopDoctors = () => {
                         }}
 
                         showsVerticalScrollIndicator={false}
-                        contentContainerStyle={{ paddingTop: 20, paddingHorizontal: 5, paddingBottom:70 }}
+                        contentContainerStyle={{ paddingTop: 20, paddingHorizontal: 5, paddingBottom: 70 }}
                     />
                 </View>
             </View>
