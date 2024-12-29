@@ -20,7 +20,7 @@ const data = [
         id: 2,
         name: 'Pharmacy',
         icon: require('../../../assets/images/Pharmacy.png'),
-        navigationScreen: 'FindDoctor',
+        navigationScreen: 'Pharmacy',
 
     },
     {

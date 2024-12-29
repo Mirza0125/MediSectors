@@ -25,7 +25,6 @@ const SplashTwo = () => {
       <View style={styles.container}>
         <Image source={require('../../../assets/images/OnBoarding/doctors.png')} resizeMode='cover' style={{ width: 360, height: 360 }} />
       </View>
-
       <OnBoardingModal text={'Consult only with a doctor you trust'} onPress={()=> navigation.navigate('SplashThree')} one={true} />
     </SafeAreaView>
 

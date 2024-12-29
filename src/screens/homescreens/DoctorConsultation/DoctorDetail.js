@@ -138,16 +138,12 @@ const DoctorDetail = () => {
                 </View>
                 <View style={{ marginTop: 25 }}>
                     <Text style={{ color: COLORS.primary, fontFamily: 'Poppins-Bold', fontSize: 16 }}>About</Text>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap:'wrap' }}>
-                        <Text style={{ color: COLORS.lightGrey, fontFamily: 'Poppins-Regular', alignItems: 'center' }}>
-                            {isExpanded ? fullText : shortText}
+                    <Text style={{ color: COLORS.lightGrey, fontFamily: 'Poppins-Regular', flexWrap: 'wrap', flexDirection: 'row' }}>
+                        {isExpanded ? fullText : shortText}
+                        <Text onPress={toggleReadMore} style={{ color: COLORS.greenColor, fontFamily: 'Poppins-Regular' }}>
+                            {isExpanded ? ' Read less' : ' Read more'}
                         </Text>
-                        <TouchableOpacity onPress={toggleReadMore}>
-                            <Text style={{ color: COLORS.greenColor, fontFamily: 'Poppins-Regular' }}>
-                                {isExpanded ? 'Read less' : 'Read more'}
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
+                    </Text>
 
                 </View>
                 <View>
@@ -215,7 +211,7 @@ const DoctorDetail = () => {
                 <TouchableOpacity>
                     <ChatButton width={48} height={48} />
                 </TouchableOpacity>
-                <CustomButton title={'Book Apointment'} style={{ width: 290 }} onPress={()=> navigation.navigate('Apointment')}/>
+                <CustomButton title={'Book Apointment'} style={{ width: 290 }} onPress={() => navigation.navigate('Apointment')} />
 
             </View>
         </SafeAreaView>

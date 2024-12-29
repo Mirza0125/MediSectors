@@ -19,7 +19,11 @@ import TopDoctors from '../screens/homescreens/home/TopDoctors';
 import FindDoctors from '../screens/homescreens/DoctorConsultation/FindDoctors';
 import DoctorDetail from '../screens/homescreens/DoctorConsultation/DoctorDetail';
 import Apointment from '../screens/homescreens/DoctorConsultation/Apointment';
-import Articles from '../screens/homescreens/Pharmacy/Articles';
+import Articles from '../screens/homescreens/home/Articles';
+import Pharmacy from '../screens/homescreens/Pharmacy/Pharmacy';
+import MedicineDetails from '../screens/homescreens/Pharmacy/MedicineDetails';
+import MyCart from '../screens/homescreens/Pharmacy/MyCart';
+import { CardStyleInterpolators } from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
 
@@ -30,7 +34,16 @@ const MainStackNavigator = () => {
   return (
     // auth.token ? <DashboardNavigator /> : <AuthNavigator />
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown:false}}>
+      <Stack.Navigator screenOptions={{
+        headerShown:false,
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        cardStyle: { backgroundColor: 'white' },
+        headerMode: 'screen',
+        headerBackTitle: ' ',
+        headerBackTitleStyle: {
+          color: '#fff',
+        },
+      }}>
         <Stack.Screen name='SplashOne' component={SplashOne} />
         <Stack.Screen name='SplashTwo' component={SplashTwo} />
         <Stack.Screen name='SplashThree' component={SplashThree} />
@@ -47,6 +60,10 @@ const MainStackNavigator = () => {
         <Stack.Screen name='DoctorDetails' component={DoctorDetail} />
         <Stack.Screen name='Apointment' component={Apointment} />
         <Stack.Screen name='Articles' component={Articles} />
+        <Stack.Screen name='Pharmacy' component={Pharmacy} />
+        <Stack.Screen name='MedicineDetails' component={MedicineDetails} />
+        <Stack.Screen name='MyCart' component={MyCart} />
+        {/* <Stack.Screen name='Ambulance' component={Ambulance} /> */}
 
 
 
