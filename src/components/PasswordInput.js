@@ -32,7 +32,7 @@ const PasswordInput = (props) => {
 
         }}>
             <Feather name='lock' size={24} color={currentTheme.lightGrey} />
-            <TextInput placeholder={props.placeholder} placeholderTextColor={currentTheme.lightGrey} style={{ width: 250, color: currentTheme.primary, fontFamily: 'Poppins-Regular', left: 0 }} secureTextEntry={!visible} />
+            <TextInput placeholder={props.placeholder} placeholderTextColor={currentTheme.lightGrey} style={{ width: 250, color: currentTheme.primary, fontFamily: 'Poppins-Regular', left: 0 }} secureTextEntry={!visible} value={props.value} onChangeText={props.onChangeText} />
             <TouchableOpacity
                 onPress={togglePasswordVisibility}>
                 <Feather name={visible ? 'eye' : 'eye-off'} size={24} color={currentTheme.lightGrey} />

@@ -1,15 +1,15 @@
 {
   "project_info": {
     "project_number": "835763271381",
-    "project_id": "schuleimgriff-d0d30",
-    "storage_bucket": "schuleimgriff-d0d30.firebasestorage.app"
+    "project_id": "medisectors-d0d30",
+    "storage_bucket": "medisectors-d0d30.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
         "mobilesdk_app_id": "1:835763271381:android:94f94224685bbd78c5d45c",
         "android_client_info": {
-          "package_name": "com.schuleimgriff"
+          "package_name": "com.medisectors"
         }
       },
       "oauth_client": [],

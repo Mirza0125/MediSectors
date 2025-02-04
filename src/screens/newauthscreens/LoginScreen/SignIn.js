@@ -11,40 +11,65 @@ const { width, height } = Dimensions.get('window')
 import { lightTheme, darkTheme } from '../../../redux/theme/theme'
 import { useSelector } from 'react-redux'
 import Entypo from 'react-native-vector-icons/Entypo';
+import { apiRequest } from '../../../services/apiServices'
 
 const SignIn = () => {
     const navigation = useNavigation()
     const [modalVisible, setModalVisible] = useState(false)
     const theme = useSelector(state => state.theme.theme)
     const currentTheme = theme === 'light' ? lightTheme : darkTheme;
+    const [userName, setUserName] = useState('')
+    const [password, setPassword] = useState('')
+
+
+
+    const handleLogin = () => {
+        const payload = {
+            userName: userName,
+            password: password
+        }
+        userLogin(payload)
+    }
+
+    const userLogin = async (payload) => {
+        const resp = await apiRequest._userLogin(payload)
+        console.log('login..................', resp)
+        if (resp?.statusCode >= 200 && resp?.statusCode < 300) {
+            setModalVisible(true)
+        }
+        else {
+
+        }
+
+    }
 
     return (
-        <SafeAreaView style={[styles.safeArea,{backgroundColor:currentTheme.background}]}>
+        <SafeAreaView style={[styles.safeArea, { backgroundColor: currentTheme.background }]}>
             <StatusBar barStyle={currentTheme.statusBar} translucent={true} backgroundColor="transparent" />
             <View style={{ flexDirection: 'row', marginTop: 50, paddingHorizontal: 20 }}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
-                   <Entypo name='chevron-thin-left' size={20} color={currentTheme.primary} />
+                    <Entypo name='chevron-thin-left' size={20} color={currentTheme.primary} />
                 </TouchableOpacity>
                 <View style={{ left: 150 }}>
                     <Text style={{ color: currentTheme.primary, fontFamily: 'Poppins-Bold', fontSize: 16 }} >Login</Text>
                 </View>
             </View>
             <View style={styles.container}>
-            <InputField name={'mail'} placeholder={'Enter your email'} />
-            <PasswordInput placeholder={'Enter your Password'} />
+                <InputField name={'user'} placeholder={'Enter your user name'} value={userName} onChangeText={(t) => setUserName(t)} />
+                <PasswordInput placeholder={'Enter your Password'} value={password} onChangeText={(t) => setPassword(t)} />
                 <View style={{ alignSelf: 'flex-end' }}>
-                    <TouchableOpacity onPress={()=> navigation.navigate('ForgetPassword')}>
+                    <TouchableOpacity onPress={() => navigation.navigate('ForgetPassword')}>
                         <Text style={{ color: currentTheme.greenColor, fontFamily: 'Poppins-Medium' }}>Forgot Password?</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={{ marginTop: 40 }}>
 
-                    <CustomButton title={'Login'} style={{ width: width * 0.9 }} onPress={() => setModalVisible(true)} />
+                    <CustomButton title={'Login'} style={{ width: width * 0.9 }} onPress={handleLogin} />
                     <View style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'center', marginTop: 14 }}>
                         <Text style={{ color: currentTheme.lightGrey, fontFamily: 'Poppins-Regular', top: 1 }}>
                             Don’t have an account?
                         </Text>
-                        <TouchableOpacity onPress={()=>navigation.navigate('SignUp')}>
+                        <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
                             <Text style={{ color: currentTheme.greenColor, fontFamily: 'Poppins-Regular', left: 4 }}>Sign Up</Text>
                         </TouchableOpacity>
                     </View>
@@ -70,7 +95,7 @@ const SignIn = () => {
                 onRequestClose={() => setModalVisible(false)}
                 transparent={true}
             >
-
+                <StatusBar translucent backgroundColor={currentTheme.modalOverlay} barStyle="dark-content"  />
                 <View style={{ height: '100%', position: 'absolute', width: '100%', backgroundColor: currentTheme.modalOverlay, alignItems: 'center' }}>
                     <View style={{ alignSelf: 'center', width: '89%', backgroundColor: currentTheme.socialField, height: '50%', padding: 30, borderRadius: 20, alignItems: 'center', top: 200 }}>
                         <Done width={100} height={100} style={{ top: 40 }} />
@@ -79,7 +104,7 @@ const SignIn = () => {
                             <Text style={{ color: currentTheme.lightGrey, fontFamily: 'Poppins-Regular', fontSize: 16, textAlign: 'center', top: 6 }}>Once again you login successfully into medidoc app</Text>
 
                         </View>
-                        <CustomButton title={'Go to home'} style={{ top: 110, width: 200 }} onPress={()=>navigation.navigate('Home')} />
+                        <CustomButton title={'Go to home'} style={{ top: 110, width: 200 }} onPress={() => navigation.navigate('Home')} />
 
                     </View>
 

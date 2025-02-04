@@ -26,6 +26,15 @@ import MyCart from '../screens/homescreens/Pharmacy/MyCart';
 import { CardStyleInterpolators } from '@react-navigation/stack';
 import Ambulance from '../screens/homescreens/Ambulance/Ambulance';
 import { lightTheme, darkTheme } from '../redux/theme/theme';
+import Profile from '../screens/homescreens/Profile/Profile';
+import Settings from '../screens/homescreens/Profile/Setting';
+import Notifications from '../screens/homescreens/Profile/settingscreens/Notifications';
+import PasswordManager from '../screens/homescreens/Profile/settingscreens/PasswordManager';
+import PrivacyPolicy from '../screens/homescreens/Profile/PrivacyPolicies';
+import Help from '../screens/homescreens/Profile/Help';
+import PaymentMethods from '../screens/homescreens/Profile/PaymentMethod';
+import Favorite from '../screens/homescreens/Profile/Favorite';
+import GenderSelections from '../screens/homescreens/HealthAssesment/GenderSelections';
 
 const Stack = createStackNavigator();
 
@@ -69,6 +78,19 @@ const MainStackNavigator = () => {
         <Stack.Screen name='MedicineDetails' component={MedicineDetails} />
         <Stack.Screen name='MyCart' component={MyCart} />
         <Stack.Screen name='Ambulance' component={Ambulance} />
+        <Stack.Screen name='ProfileScreen' component={Profile} />
+        <Stack.Screen name='Settings' component={Settings} />
+        <Stack.Screen name='Notifications' component={Notifications} />
+        <Stack.Screen name='PasswordManger' component={PasswordManager} />
+        <Stack.Screen name='PrivacyPolicy' component={PrivacyPolicy} />
+        <Stack.Screen name='Help' component={Help} />
+        <Stack.Screen name='PaymentMethods' component={PaymentMethods} />
+        <Stack.Screen name='Favorite' component={Favorite} />
+        <Stack.Screen name='GenderSelection' component={GenderSelections} />
+
+
+
+
 
 
 

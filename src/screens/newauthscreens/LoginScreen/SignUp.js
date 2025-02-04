@@ -13,6 +13,7 @@ import { lightTheme, darkTheme } from '../../../redux/theme/theme'
 import { useSelector } from 'react-redux'
 import Entypo from 'react-native-vector-icons/Entypo';
 import { Checkbox } from 'react-native-paper';
+import { apiRequest } from '../../../services/apiServices'
 
 const { width, height } = Dimensions.get('window')
 
@@ -23,6 +24,33 @@ const SignUp = () => {
     const [checked, setChecked] = useState(false)
     const theme = useSelector(state => state.theme.theme)
     const currentTheme = theme === 'light' ? lightTheme : darkTheme;
+    const [userName, setUserName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    console.log(userName, password, email)
+
+    const handleRegister = () => {
+        const payload = {
+            userName: userName,
+            email: email,
+            password: password
+        }
+        userRegisteration(payload)
+    }
+
+    const userRegisteration = async (payload) => {
+        const resp = await apiRequest._registerUser(payload)
+        console.log('registeration..................', resp.data)
+        if (resp?.status >= 200 && resp?.status < 300) {
+            setModalVisible(true)
+        }
+        else {
+
+        }
+
+    }
+
 
     return (
         <SafeAreaView style={[styles.safeArea, { backgroundColor: currentTheme.background }]}>
@@ -36,9 +64,9 @@ const SignUp = () => {
                 </View>
             </View>
             <View style={styles.container}>
-                <InputField name={'user'} placeholder={'Enter your name'} />
-                <InputField name={'mail'} placeholder={'Enter your email'} />
-                <PasswordInput placeholder={'Enter your Password'} />
+                <InputField name={'user'} placeholder={'Enter your name'} value={userName} onChangeText={(t) => setUserName(t)} />
+                <InputField name={'mail'} placeholder={'Enter your email'} value={email} onChangeText={(t) => setEmail(t)} />
+                <PasswordInput placeholder={'Enter your Password'} value={password} onChangeText={(t) => setPassword(t)} />
             </View>
 
             <View style={{ paddingHorizontal: 25, marginTop: 15 }}>
@@ -60,9 +88,9 @@ const SignUp = () => {
                     />
                     <View style={{ marginHorizontal: 6, left: 3 }}>
                         <Text style={{ color: currentTheme.primary, fontFamily: 'Poppins-Regular' }}>
-                            I agree to the medisectors <Text style={{ color: currentTheme.greenColor }}>Terms of Service </Text> 
-                        &</Text>
-                        <Text style={{ color: currentTheme.greenColor,top:2 }}>Privacy Policy</Text>
+                            I agree to the medisectors <Text style={{ color: currentTheme.greenColor }}>Terms of Service </Text>
+                            &</Text>
+                        <Text style={{ color: currentTheme.greenColor, top: 2 }}>Privacy Policy</Text>
                     </View>
 
 
@@ -70,7 +98,7 @@ const SignUp = () => {
             </View>
 
             <View style={{ marginTop: 40, paddingHorizontal: 20 }}>
-                <CustomButton title={'Sign Up'} style={{ width: width * 0.9 }} onPress={() => setModalVisible(true)} />
+                <CustomButton title={'Sign Up'} style={{ width: width * 0.9 }} onPress={handleRegister} />
                 <View style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'center', marginTop: 10 }}>
                     <Text style={{ color: currentTheme.lightGrey, fontFamily: 'Poppins-Regular', top: 1 }}>
                         Already have an account?

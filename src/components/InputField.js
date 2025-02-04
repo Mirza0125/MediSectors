@@ -24,7 +24,7 @@ const InputField = (props) => {
       marginVertical: 10
     }}>
       <Feather name={props.name} size={24} color={currentTheme.lightGrey} />
-      <TextInput placeholder={props.placeholder} placeholderTextColor={currentTheme.lightGrey} style={{ width: 290, color: currentTheme.primary, fontFamily: 'Poppins-Regular', left: 16 }} />
+      <TextInput placeholder={props.placeholder} placeholderTextColor={currentTheme.lightGrey} style={{ width: 290, color: currentTheme.primary, fontFamily: 'Poppins-Regular', left: 16 }} value={props.value} onChangeText={props.onChangeText} />
     </View>
   )
 }

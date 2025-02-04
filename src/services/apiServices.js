@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getAuthToken, saveAuthToken } from './authToken';
 
-const API_BASE_URL = 'https://api.sostudy.de/api/v1';
+const API_BASE_URL = 'https://medisector-production.up.railway.app';
 
 // The code block initializes an Axios instance for the API service.
 // The baseURL is set to API_BASE_URL, the timeout is set to 10000 milliseconds, and the headers object is used to specify the content type for the HTTP requests.
@@ -551,6 +551,7 @@ const apiRequest = {
       return error;
     }
   },
+
   _registerUser: async data => {
     try {
       const response = await apiService.post(`/register`, data);
@@ -563,6 +564,7 @@ const apiRequest = {
       }
     }
   },
+
   _verifyRefrralCode: async data => {
     const token = await getAuthToken();
     try {
@@ -610,7 +612,7 @@ const apiRequest = {
     }
   },
   _userLogin: async data => {
-    const response = await apiService.post(`/login`, data);
+    const response = await apiService.post(`/register/login`, data);
     try {
       return response.data;
     } catch (error) {

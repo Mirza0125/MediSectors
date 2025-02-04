@@ -3,7 +3,7 @@ import React from 'react'
 import { COLORS } from '../../../services/colors'
 import Entypo from 'react-native-vector-icons/Entypo';
 import { useNavigation } from '@react-navigation/native';
-import MapView from 'react-native-maps';
+// import MapView from 'react-native-maps';
 
 const Ambulance = () => {
     const navigation = useNavigation()
@@ -18,14 +18,14 @@ const Ambulance = () => {
                     <View>
                     </View>
                 </View>
-                <MapView
+                {/* <MapView
                     initialRegion={{
                         latitude: 37.78825,
                         longitude: -122.4324,
                         latitudeDelta: 0.0922,
                         longitudeDelta: 0.0421,
                     }}
-                />
+                /> */}
             </View>
         </SafeAreaView >
     )

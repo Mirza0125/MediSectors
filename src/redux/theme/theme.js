@@ -1,6 +1,6 @@
 export const lightTheme = {
   background : 'rgba(255, 255, 255, 1)',
-  greenColor : 'rgba(25, 154, 142, 1)',
+  greenColor : 'rgba(48, 173, 162, 1)',
   white : 'rgba(255, 255, 255, 1)',
   lightGrey: 'rgba(161, 168, 176, 1)',
   gradient1 : 'rgba(245, 247, 255, 1)',
@@ -29,7 +29,7 @@ export const lightTheme = {
 
 export const darkTheme = {
   background : 'rgba(20, 21, 28, 1)',
-  greenColor : 'rgba(25, 154, 142, 1)',
+  greenColor : 'rgba(48, 173, 162, 1)',
   white : 'rgb(31, 30, 30)',
   lightGrey: 'rgba(161, 168, 176, 1)',
   gradient1 : 'rgb(44, 44, 45)',

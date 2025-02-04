@@ -1,4 +1,4 @@
-package com.schuleimgriff
+package com.medisectors
 
 import android.app.Application
 import com.facebook.react.PackageList
