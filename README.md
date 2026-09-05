@@ -1,79 +1,194 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# MediSectors
 
-# Getting Started
+MediSectors is a cross platform React Native mobile application built to support AI powered learning, personalized academic progress tracking, and online tutoring.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+The application helps students learn according to their curriculum, identify knowledge gaps, practice through AI generated content, communicate with tutors, and manage their learning journey from one place.
 
-## Step 1: Start the Metro Server
+## Features
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+* AI powered personalized learning assistance
+* Curriculum based learning tasks
+* AI generated flashcards
+* Exam simulations based on subject, grade, and learning level
+* Learning progress tracking
+* Skill map for identifying strengths and weaknesses
+* AI based learning prognosis and recommendations
+* Class assignment and document analysis
+* Online tutoring and live meetings
+* Individual and group chat support
+* Document sharing between students and tutors
+* Push notifications
+* User profile management
+* Multi language support with English and German translations
+* Persistent login and app state management
 
-To start Metro, run the following command from the _root_ of your React Native project:
+## Tech Stack
+
+| Technology                      | Purpose                                                   |
+| ------------------------------- | --------------------------------------------------------- |
+| React Native 0.73               | Cross platform mobile application development             |
+| React Navigation                | Stack and bottom tab navigation                           |
+| Redux Toolkit and Redux Persist | Global state and persistent user sessions                 |
+| Firebase                        | Authentication, Firestore, Cloud Messaging, and analytics |
+| Axios                           | REST API communication                                    |
+| Socket.IO                       | Real time chat and online user status                     |
+| i18next                         | Multi language support                                    |
+| React Native Paper              | UI components and theming                                 |
+| AsyncStorage                    | Local device storage                                      |
+
+## Requirements
+
+Before running the project, make sure the following tools are installed:
+
+* Node.js 18 or later
+* npm or Yarn
+* Android Studio for Android development
+* Xcode and CocoaPods for iOS development on macOS
+* React Native development environment configured correctly
+
+For complete environment setup, please follow the official [React Native environment setup guide](https://reactnative.dev/docs/environment-setup).
+
+## Installation
+
+Clone the repository:
 
 ```bash
-# using npm
+git clone https://github.com/Mirza0125/MediSectors.git
+```
+
+Move into the project directory:
+
+```bash
+cd MediSectors
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+For iOS, install CocoaPods dependencies:
+
+```bash
+cd ios
+pod install
+cd ..
+```
+
+## Configuration
+
+Before running the application, configure the required services:
+
+1. Add your Firebase Android configuration file:
+
+```text
+android/app/google-services.json
+```
+
+2. Add your Firebase iOS configuration file:
+
+```text
+ios/GoogleService-Info.plist
+```
+
+3. Update Firebase configuration values in:
+
+```text
+firebase.js
+```
+
+4. Update the backend API base URL in:
+
+```text
+src/services/apiServices.js
+```
+
+5. Update Socket.IO server URLs if required:
+
+```text
+src/services/SocketServcies.js
+src/services/userStatusSocket.js.js
+```
+
+## Run the Application
+
+Start the Metro bundler:
+
+```bash
 npm start
-
-# OR using Yarn
-yarn start
 ```
 
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
+Run the Android application:
 
 ```bash
-# using npm
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
-### For iOS
+Run the iOS application:
 
 ```bash
-# using npm
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+## Available Scripts
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+```bash
+npm start
+```
 
-## Step 3: Modifying your App
+Starts the Metro bundler.
 
-Now that you have successfully run the app, let's modify it.
+```bash
+npm run android
+```
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+Runs the app on an Android emulator or connected Android device.
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+```bash
+npm run ios
+```
 
-## Congratulations! :tada:
+Runs the app on an iOS simulator.
 
-You've successfully run and modified your React Native App. :partying_face:
+```bash
+npm test
+```
 
-### Now what?
+Runs the Jest test suite.
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+```bash
+npm run lint
+```
 
-# Troubleshooting
+Runs ESLint to check code quality.
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+## Project Structure
 
-# Learn More
+```text
+MediSectors/
+├── android/                 # Android native project
+├── ios/                     # iOS native project
+├── src/
+│   ├── assets/              # Images, icons, and fonts
+│   ├── redux/               # Redux store, actions, and reducers
+│   ├── routers/             # App navigation
+│   ├── screens/             # Application screens
+│   ├── services/            # APIs, sockets, notifications, and utilities
+│   └── translation/         # English and German translations
+├── App.js                   # Main application entry point
+├── firebase.js              # Firebase configuration
+└── package.json             # Dependencies and scripts
+```
 
-To learn more about React Native, take a look at the following resources:
+## Security Note
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Do not commit production API keys, Firebase credentials, signing keys, or sensitive server URLs to a public repository. Use secure environment configuration for production builds.
+
+## Developer
+
+Developed by [Jahanzaib Ali](https://github.com/Mirza0125)
+
+## License
+
+This project is private and intended for authorized use only.
